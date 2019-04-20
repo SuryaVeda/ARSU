@@ -1,0 +1,165 @@
+.butt{
+  float: right;
+
+  position: fixed;
+  left: 95%;
+  top: 70%;
+}
+.list{
+  height: 400px;
+  width: 400px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+}
+#search button{
+    border-color: black;
+    border-style: solid;
+  }
+.contents{
+  position: fixed;
+}
+
+.ff{
+  text-align: center;
+  margin: 40px auto;
+  color: #800000;
+  font-weight: lighter;
+}
+.topics{
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+li{
+  list-style-type: square;
+}
+.f{
+  font-size: 25px;
+}
+.mm {
+  height: 400px;
+  width: 500px;
+  margin: 90px auto;
+  border-color: black;
+  border-style: solid;
+}
+.box {
+
+}
+.question {
+  margin-top: 30px;
+}
+.answer{
+  display: none;
+  text-align: center;
+
+}
+.answer h3{
+  text-decoration: underline;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.answer p {
+  font-weight: bold;
+  font-size: 24px;
+}
+.wrapper{
+  text-align: center;
+  top: 10px;
+}
+.wrapper button{
+  border: black;
+  border-style: solid;
+}
+.images{
+  text-align: center;
+}
+.images img{
+  height: 200px;
+  width: 200px;
+}
+.carousel-control-prev{
+  background-color: black;
+  height: 40px;
+  width: 40px;
+  margin: 15% auto;
+
+}
+.carousel-control-next{
+  background-color: black;
+  height: 40px;
+  width: 40px;
+  margin: 15% auto;
+
+}
+.questionOne{
+  font-size: 25px;
+  text-align: center;
+  margin: 0 auto;
+}
+.questionOne img{
+  height: 300px;
+  width: 500px;
+}
+
+@media screen and (max-width: 800px) {
+  .mm {
+    height: 400px;
+    width: 300px;
+    margin: 90px auto;
+    overflow: auto;
+  }
+  .box {
+  }
+  .question {
+  }
+  .answer{
+    display: none;
+  }
+  .wrapper{
+    text-align: center;
+  }
+  .wrapper button{
+    border: black;
+    border-style: solid;
+  }
+  .images{
+    text-align: center;
+  }
+  .images img{
+    height: 150px;
+    width: 150px;
+  }
+  .carousel-control-prev{
+    background-color: black;
+    height: 40px;
+    width: 40px;
+    margin-top: 98%;
+
+  }
+
+  .carousel-control-next{
+    background-color: black;
+    height: 40px;
+    width: 40px;
+    margin-top: 98%;
+  }
+  .questionOne img{
+    height: 300px;
+    width: 300px;
+  }
+
+  .butt{
+    float: right;
+    position: fixed;
+    left: 85%;
+    top: 90%;
+  }
+
+  .list{
+  height: 200px;
+  width: 200px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+  }
+}

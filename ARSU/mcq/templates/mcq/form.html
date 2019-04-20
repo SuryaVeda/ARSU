@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<div class="container box">
+  <h1>Add Mcq</h1>
+  <div class="formBox container">
+    <form method="post" enctype="multipart/form-data" action="{% url 'mcq:forms' %}">
+      {% csrf_token %}
+      <ol>
+        <li>Subject: {{ form.subject }}</li>
+        <li>Topic : {{form.topic}}</li>
+        <a href="{% url 'mcq:addTopic' %}"><b>Add Topic</b>
+        <img src="/media/images/plus.png" height="10px" width="10px"></a>
+        <li>Question :{{form.question}}</li>
+        <li>Add Image :{{form.image}}</li>
+        <li>Answer: {{form.answer}}</li>
+      </ol>
+      <button type="submit" name="button">submit</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

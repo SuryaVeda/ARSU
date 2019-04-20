@@ -1,0 +1,137 @@
+.main {
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+#fu img{
+margin: 0 auto;
+}
+.butt{
+  position: fixed;
+  top: 30%;
+  bottom: auto;
+  margin: 0 0 0 90%;
+}
+.lolo {
+  text-align: center;
+  font-weight: 100;
+  font-size: 50px;
+  margin: 5% auto;
+  color: #800000;
+  text-decoration: underline;
+}
+.eve{
+  text-align: center;
+  font-weight: 50;
+  font-size: 40px;
+  margin: 5% auto;
+  color: #800000;
+}
+.toc_container {
+    background: #f9f9f9 none repeat scroll 0 0;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    border: 1px solid #aaa;
+    display: table;
+    font-size: 95%;
+    margin-bottom: 1em;
+    padding: 20px;
+    width: auto;
+    position: fixed;
+    top: auto;
+    bottom: 30%;
+    display: none;
+}
+
+.toc_container a {
+  color: black;
+}
+
+.toc_title {
+    font-weight: 700;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.cric{
+  text-align: center;
+  font-weight: 50;
+  font-size: 40px;
+  margin: 5% auto;
+  color: #800000;
+
+}
+
+.circle{
+  border: 5px inset #d9d9d9;
+  text-align: center;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+.circle p {
+
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  margin: 0 auto;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+
+}
+
+.grid-item {
+  font-size: 15px;
+  text-align: center;
+}
+.text {
+  color: #800000;
+}
+@media screen and (max-width: 800px) {
+  .toc_container{
+    display: none;
+  }
+  .grid-container {
+    display: block;
+    text-align: center;
+  }
+  .grid-item {
+    margin: 20% auto;
+  }
+  .circle {
+    margin: 0 auto;
+  }
+  .mama img {
+    height: 100%;
+    width: 100%;
+  }
+  #fu {
+    height: 20px;
+    width:  20px;
+  }
+  .eve{
+    text-align: center;
+    font-weight: 50;
+    font-size: 35px;
+    margin: 5% auto;
+    color: #800000;
+  }
+  .butt{
+    position: fixed;
+    top: 5%;
+    bottom: auto;
+    margin: 0 0 0 68%;
+  }
+  .lolo {
+    text-align: center;
+    font-weight: 100;
+    font-size: 40px;
+    margin: 5% auto;
+    color: #800000;
+    text-decoration: underline;
+  }
+}

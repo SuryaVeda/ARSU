@@ -1,0 +1,21 @@
+body {
+  background-color:  #ffffe6;
+}
+
+.box{
+  text-align: center;
+  margin-top: 10%;
+  width: 50%
+}
+.formBox{
+  margin-top: 40px;
+  text-align: left;
+  margin-left: 25%;
+}
+.formBox li {
+  margin-top: 40px;
+}
+button{
+  margin-top: 40px;
+  margin-left: 20%;
+}

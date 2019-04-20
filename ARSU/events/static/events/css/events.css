@@ -1,0 +1,56 @@
+
+
+.lolo {
+  text-align: center;
+  font-weight: 100;
+  font-size: 50px;
+  margin: 5% auto;
+  color: #800000;
+  text-decoration: underline;
+}
+a {
+  color: inherit;
+}
+.circle{
+  border: 5px inset #d9d9d9;
+  text-align: center;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+.circle p {
+
+  font-size: 20px;
+  font-weight: bold;
+
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 300px 300px;
+  margin: 0 auto;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+
+}
+
+.grid-item {
+  font-size: 15px;
+  text-align: center;
+}
+.text {
+  color: #800000;
+}
+@media screen and (max-width: 800px) {
+  .grid-container {
+    display: block;
+    text-align: center;
+  }
+  .grid-item {
+    margin: 20% auto;
+  }
+  .circle {
+    margin: 0 auto;
+  }
+}

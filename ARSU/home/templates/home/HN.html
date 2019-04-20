@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+    <div class="container box">
+      <h3>Hospital News</h3>
+      <div class="formBox container">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_ul }}
+          <button type="submit" name="button">submit</button>
+        </form>
+      </div>
+    </div>
+{% endblock %}

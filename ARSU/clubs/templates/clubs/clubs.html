@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+<div class="container-fluid main">
+  <div class="lolo">
+      <p>Clubs</p>
+  </div>
+  <div class="grid-container">
+    {% for club in clubs %}
+    <div class="grid-item">
+        <a  class="text" href="/clubs/{{ club.text }}"><h4>{{ club.heading }}</h4></a>
+      {% if club.image %}
+        <a href="/clubs/{{ club.text }}"><img src="/media/{{ club.image }}" height="200px" width="300px"></a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

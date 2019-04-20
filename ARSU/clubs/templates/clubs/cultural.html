@@ -1,0 +1,67 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'clubs/css/clubs.css' %}">
+<div class="dropdown butt container-fluid">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Lit
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for club in clubs%}
+  <a class="dropdown-item" href="/clubs/{{ club.text }}">{{ club.heading }} </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="lolo">
+      <p>Cultural Activities </p>
+  </div>
+  <div class="toc_container">
+<p class="toc_title">Contents</p>
+<ol class="toc_list">
+  {% for club in clubs%}
+<li><a href="/clubs/{{ club.text }}">{{ club.heading }} </a></li>
+  {% endfor %}
+</ol>
+</div>
+
+<div class="container-fluid mama">
+  {% for det in detail %}
+  {% ifequal det.post.heading "Cultural Activities" %}
+  <div class="container-fluid">
+    <div class="cric">
+      <p>{{ det.heading }}</p>
+      <img src="/media/{{ det.img }}" height="400px" width="600px">
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+          <p class="eve">Events</p>
+          <a href="{% url 'clubs:EventForm' %}"> <img id="fu" src="/media/images/plus.png" height = 20px width = 20px> </a>
+      </div>
+    </div>
+    <div class="grid-container">
+  {% for event in events %}
+    {% ifequal event.post.heading det.heading %}
+    <div class="grid-item">
+      <div class="circle"><p>{{ event.month }}</p>
+      <b>{{ event.date }}</b>
+     </div>
+     <div class="text">
+      <p>{{ event.heading }}</p>
+       {% if event.image %}
+       <img src="/media/{{ event.image }}" height="150px" width="150px">
+       {% endif %}
+       {% if event.text %}
+       <p>{{ event.text }}</p>
+       {% endif %}
+     </div>
+    </div>
+    {% endifequal %}
+  {% endfor %}
+    </div>
+  </div>
+  {% endifequal %}
+  {% endfor %}
+</div>
+</div>
+{% endblock %}

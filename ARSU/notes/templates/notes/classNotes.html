@@ -1,0 +1,93 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'notes/css/classNotes.css' %}">
+
+<div class=" big">
+  <div class="dropdown butt container-fluid">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    </button>
+     <div class="dropdown-menu list" aria-labelledby="dropdownMenuButton">
+       <form class="  dropdown-item" method="get" action="{% url 'notes:search' %}" value = "{{ request.GET.q }}">
+          <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
+          <button class="btn  my-2 my-sm-0 search" type="submit" value="Search" >Search</button>
+      </form>
+      {% for sub in subjects %}
+    <a class="dropdown-item" href="#{{ sub.pk }}">{{ sub.heading }} </a>
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <div class="sub">
+      <h2>Subjects</h2>
+      <a href="{% url 'notes:subject' %}"> <img src="/media/images/plus.png" height = "20px" width = "20px"> </a>
+  </div>
+  {% for subject in subjects%}
+  <div class="container-fluid subjects ">
+      <h3 id="{{ subject.pk }}">{{ subject.heading }}</h3>
+      <a href="{% url 'notes:posts' %}"> <img class="plus" src="/media/images/plus.png" height = "20px" width = "20px"> </a>
+    <div class="container-fluid ebooks">
+      <h4>Ebooks</h4>
+      <div class="row">
+      {% for post in posts %}
+      {% ifequal post.post.heading subject.heading %}
+        {% if post.ebooks_pdf %}
+        <div class="col-auto">
+          {% if post.user %}
+          <p>{{ post.user }}</p>
+          {% else %}
+          <p>Anonymous</p>
+          {% endif %}
+          <embed  src="/media/{{ post.ebooks_pdf }}" width="80px" height="80px">
+        <a href="/media/{{ post.ebooks_pdf }}"><p>{{ post.heading }}</p></a>
+        </div>
+        {% endif %}
+      {% endifequal %}
+      {% endfor %}
+      </div>
+    </div>
+    <div class="container-fluid papers ebooks">
+      <h4>Papers</h4>
+      <div class="row">
+      {% for post in posts %}
+      {% ifequal post.post.heading subject.heading %}
+        {% if post.papers_pdf %}
+        <div class="col-auto">
+          {% if post.user %}
+          <p>{{ post.user }}</p>
+          {% else %}
+          <p>Anonymous</p>
+          {% endif %}
+          <embed  src="/media/{{ post.papers_pdf }}" width="80px" height="80px">
+          <a href="/media/{{ post.papers_pdf }}"><p>{{ post.heading }}</p></a>
+        </div>
+        {% endif %}
+      {% endifequal %}
+      {% endfor %}
+      </div>
+    </div>
+    <div class="container-fluid lectures ebooks">
+      <h4>Lectures</h4>
+      <div class="row">
+      {% for post in posts %}
+      {% ifequal post.post.heading subject.heading %}
+        {% if post.lectures_pdf %}
+        <div class="col-auto">
+        {% if post.user %}
+        <p>{{ post.user }}</p>
+        {% else %}
+        <p>Anonymous</p>
+        {% endif %}
+        <embed  src="/media/{{ post.lectures_pdf }}" width="80px" height="80px">
+        <a href="/media/{{ post.lectures_pdf }}"><p>{{ post.heading }}</p></a>
+        </div>
+        {% endif %}
+      {% endifequal %}
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

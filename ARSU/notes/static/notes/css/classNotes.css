@@ -1,0 +1,58 @@
+.butt{
+  float: right;
+
+  position: fixed;
+  left: 95%;
+  top: 70%;
+}
+.list{
+  height: 400px;
+  width: 400px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+}
+
+.big{
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  background-color:#ffec80;
+  border-style: solid;
+  border-color: #ffec80;
+}
+.sub{
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  margin: 5% auto;
+  text-align: center;
+}
+
+.subjects {
+  background-color: white;
+}
+.subjects h3 {
+  text-align: center;
+  margin:1% auto;
+}
+
+.ebooks {
+  margin-bottom: 8%;
+}
+.plus {
+  margin: 0 50% 10% 49%;
+
+}
+@media screen and (max-width: 800px){
+  .butt{
+    float: right;
+    position: fixed;
+    left: 85%;
+    top: 70%;
+  }
+
+  .list{
+  height: 300px;
+  width: 200px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+  }
+}

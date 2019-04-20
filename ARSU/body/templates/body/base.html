@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="aiims rishikesh" content="e-books">
+    <title>Aiims rishikesh student union website</title>
+    <link rel="stylesheet" href="{% static 'body/css/base.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Sree+Krushnadevaraya" rel="stylesheet">
+  </head>
+  <body  class="container">
+    <div class="heading container">
+      <h1>AIIMS RISHIKESH STUDENT UNION</h1>
+      <div class="container">
+        <img src="{% static 'body/images/aiimsrsk4.png'%}" width="100px" height="100px" alt="">
+      </div>
+    </div>
+
+  <div class="container" id="navBar">
+    <nav class="navbar navbar-expand-lg navbar-dark container">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'body/images/aiimsrsk4.png'%}" width="30" height="30" class="d-inline-block align-top" alt="">
+            ARSU
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContents" aria-controls="navContents" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navContents">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'home:home' %}">Home <!--span class="sr-only">(current)</span--></a>
+            <a class="nav-item nav-link active" href="{% url 'body:body' %}">Body</a>
+            <a class="nav-item nav-link active" href="#">ClassNotes</a>
+            <a class="nav-item nav-link active" href="#">Events</a>
+            <a class="nav-item nav-link active" href="#">Notifications</a>
+            <a class="nav-item nav-link active" href="#">Discussion Rooms</a>
+          </div>
+        </div>
+     </nav>
+   </div>
+   {% if messages %}
+     {% for message in messages %}
+       <div class="alert alert-{{ message.tags }}">
+         {{ message }}
+       </div>
+
+     {% endfor %}
+   {% endif %}
+    {% block main %}
+    {% endblock %}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   </body>
+   <footer>
+     <div class="socialMedia container">
+         <p>Hello, You can follow us!</p>
+     </div>
+     <div class="heading container">
+       <img src="{% static 'body/images/aiimsrsk4.png'%}" width="100px" height="100px" alt="">
+     </div>
+   </footer>
+
+  </html>

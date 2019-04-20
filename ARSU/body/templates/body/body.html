@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'body/css/body.css' %}">
+<!--div class="container intro">
+  <img src="{% static 'body/images/aiimsrsk4.png' %}" height="60px" width="60px" >
+  <h1>ARSU</h1>
+</div-->
+<div class="new">
+<div class="intro container-fluid">
+  <h1>ARSU</h1>
+  <h2>STUDENT BODY</h2>
+</div>
+<div class="container-fluid main_body">
+     {% for post in posts %}
+  <div class="container-fluid student">
+     <div class="name container-fluid">
+       <a href="{% url 'body:details' %}"><h3>{{ post.heading }}</h3></a>
+       <img src="/media/{{ post.image }}" height="180px" width="180px">
+     </div>
+     <p>Name: {{ post.name }}</p>
+     <p>Batch: {{ post.batch }}</p>
+     <p class="one">Contact-</p>
+     <p>Email: {{ post.email }}</p>
+     <p>Phone: {{ post.phone }}</p>
+  </div>
+     {% endfor %}
+</div>
+</div>
+{% endblock %}

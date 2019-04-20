@@ -1,0 +1,42 @@
+body {
+  font-family: 'Sree Krushnadevaraya', serif;
+}
+
+a {
+  color: white;
+}
+a:hover {
+  color: blue;
+}
+
+.heading{
+  background-color:#800000 ;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bolder;
+  color:white;
+  padding: 10px 0 10px 0;
+  font-family: 'Sree Krushnadevaraya', serif;
+}
+
+.navigation {
+  background-color: hsl(0, 2%, 23%);
+  width:100%;
+  height: 100px;
+  padding:20px 0 20px 0;
+  border: 5px solid hsl(0, 2%, 23%);
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: white;
+}
+
+.socialMedia {
+  background-color: #2a1506 ;
+  height: 100px;
+  color: white;
+}
+
+#navBar {
+  background-color: #202020;
+  color: white;
+}

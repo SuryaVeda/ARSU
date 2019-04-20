@@ -1,0 +1,40 @@
+$(document).ready(function(){
+  $(".five").click(function(){
+    $(".batFif").css("display","block");
+    $(".batSix").css("display","None");
+    $(".batSeven").css("display","None");
+    $(".batEight").css("display","None");
+    $(".batNine").css("display","None");
+  });
+  $(".six").click(function(){
+    $(".batSix").css("display","block");
+    $(".batSeven").css("display","None");
+    $(".batEight").css("display","None");
+    $(".batNine").css("display","None");
+    $(".batFif").css("display","None");
+  });
+  $(".seven").click(function(){
+    $(".batSeven").css("display","block");
+    $(".batEight").css("display","None");
+    $(".batNine").css("display","None");
+    $(".batFif").css("display","None");
+    $(".batSix").css("display","None");
+  });
+  $(".eight").click(function(){
+    $(".batEight").css("display","block");
+    $(".batNine").css("display","None");
+    $(".batFif").css("display","None");
+    $(".batSix").css("display","None");
+    $(".batSeven").css("display","None");
+
+  });
+  $(".nine").click(function(){
+    $(".batNine").css("display","block");
+    $(".batFif").css("display","None");
+    $(".batSix").css("display","None");
+    $(".batSeven").css("display","None");
+    $(".batEight").css("display","None");
+
+  });
+
+});

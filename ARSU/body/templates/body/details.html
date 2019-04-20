@@ -1,0 +1,17 @@
+{% extends 'body/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'body/css/body.css' %}">
+<div class="intro container">
+  <h1>ARSU</h1>
+  <h2>STUDENT BODY</h2>
+</div>
+<div class="main_body">
+{% for detail in details %}
+<div class="container details">
+   <h3>{{ detail.heading }}</h3>
+   <p>{{ detail.text }}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

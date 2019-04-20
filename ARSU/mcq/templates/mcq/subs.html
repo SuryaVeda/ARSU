@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+<div class="container-fluid main">
+  <div class="lolo">
+      <p>Subjects</p>
+  </div>
+  <div class="grid-container">
+    {% for sub in subjects %}
+    <div class="grid-item">
+        <a  class="text" href="/mcq/{{ sub.heading }}"><h4>{{ sub.heading }}</h4></a>
+      {% if sub.image %}
+        <a href = "/mcq/{{ sub.heading }}" ><img src="/media/{{ sub.image }}" height="200px" width="300px"></a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}
