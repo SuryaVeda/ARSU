@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import subject, sideHeading
-from .forms import subjectForm, sideHeadingForm
+from .models import subject, Ebook, Paper, Lecture
+from .forms import subjectForm, EbookForm, PaperForm, LectureForm
 from itertools import chain
 from django.contrib.auth.decorators import login_required
 from home.decorators import student_required
@@ -10,8 +10,11 @@ from home.decorators import student_required
 def notes(request):
     template_name = 'notes/classNotes.html'
     subjects = subject.objects.order_by('pk')
-    posts = sideHeading.objects.order_by('pk')
-    return render(request, template_name, {'subjects':subjects, 'posts':posts})
+    Eposts = Ebook.objects.order_by('pk')
+    Pposts = Paper.objects.order_by('pk')
+    Lposts = Lecture.objects.order_by('pk')
+    return render(request, template_name, {'subjects':subjects, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
+
 @login_required
 @student_required
 def subject_form(request):
@@ -29,18 +32,52 @@ def subject_form(request):
         return render(request, template_name, {'form':form})
 @login_required
 @student_required
-def posts(request):
+def Pposts(request,id):
     template_name = 'notes/postForm.html'
-    form = sideHeadingForm()
+    form = PaperForm()
     if request.method =='POST':
-       form = sideHeadingForm(request.POST, request.FILES)
+       form = PaperForm(request.POST, request.FILES)
        if form.is_valid():
           form = form.save(commit=False)
           form.user = request.user
+          form.post = subject.objects.get(pk=id)
           form.save()
           return redirect('notes:notes')
     else:
-        form = sideHeadingForm()
+        form = PaperForm()
+        return render(request, template_name, {'form':form})
+
+@login_required
+@student_required
+def Lposts(request, id):
+    template_name = 'notes/postForm.html'
+    form = LectureForm()
+    if request.method =='POST':
+       form = LectureForm(request.POST, request.FILES)
+       if form.is_valid():
+          form = form.save(commit=False)
+          form.user = request.user
+          form.post = subject.objects.get(pk=id)
+          form.save()
+          return redirect('notes:notes')
+    else:
+        form = LectureForm()
+        return render(request, template_name, {'form':form})
+@login_required
+@student_required
+def Eposts(request, id):
+    template_name = 'notes/postForm.html'
+    form = EbookForm()
+    if request.method =='POST':
+       form = EbookForm(request.POST, request.FILES)
+       if form.is_valid():
+          form = form.save(commit=False)
+          form.user = request.user
+          form.post = subject.objects.get(pk=id)
+          form.save()
+          return redirect('notes:notes')
+    else:
+        form = EbookForm()
         return render(request, template_name, {'form':form})
 @login_required
 @student_required
@@ -50,13 +87,14 @@ def search(request):
         query = request.GET.get('q')
         submitButton = request.GET.get('submit')
         if query == "":
-            return render(request, template_name)
+            return redirect('notes:notes')
         else:
-            subjectResults = subject.objects.filter(heading__icontains = query)
-            sideHeadingResults = sideHeading.objects.filter(heading__icontains = query)
-            Results = list(chain(subjectResults,sideHeadingResults))
-            context = {'Results':Results}
-            return render(request, template_name, context)
-
+            a = subject.objects.search(query)
+            b = Ebook.objects.search(query)
+            c = Paper.objects.search(query)
+            d = Lecture.objects.search(query)
+            final = list(chain(a, b, c, d))
+            length = len(results)
+            return render(request, template_name, {'final':final, 'length':length})
     else:
-        return render(request, template_name)
+        return redirect('notes:notes')

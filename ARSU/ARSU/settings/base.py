@@ -9,7 +9,7 @@ MEDIA_URL = '/media/'
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = "HELLO"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -24,10 +24,10 @@ INSTALLED_APPS = [
     'notes',
     'events',
     'clubs',
-    'batches',
     'accounts',
     'welcome',
     'mcq',
+    'TravelGuide',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -114,8 +114,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'suryaaddu@gmail.com'
+EMAIL_HOST_PASSWORD = 'Surya@@1997'
 STATIC_URL = '/static/'
-
 # Extra places for collectstatic to find static files.
 LOGIN_REDIRECT_URL = '/welcome/'
+LOGIN_URL = '/accounts/signin'

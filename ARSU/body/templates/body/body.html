@@ -2,20 +2,29 @@
 {% load static %}
 {% block main %}
 <link rel="stylesheet" href="{% static 'body/css/body.css' %}">
-<!--div class="container intro">
-  <img src="{% static 'body/images/aiimsrsk4.png' %}" height="60px" width="60px" >
-  <h1>ARSU</h1>
-</div-->
+
 <div class="new">
 <div class="intro container-fluid">
-  <h1>ARSU</h1>
-  <h2>STUDENT BODY</h2>
+  {% if request.user.cr %}
+  <h1>Student Body<a href="{% url 'body:add' %}">
+  <img src="/media/images/plus.png" height="10px" width="10px"></a></h1>  {% elif request.user.student %}
+   {% elif request.user.student %}
+  <h1> Student Body </h1>
+  {% else %}
+  <h1>Hello</h1>
+  {% endif %}
 </div>
 <div class="container-fluid main_body">
      {% for post in posts %}
   <div class="container-fluid student">
      <div class="name container-fluid">
-       <a href="{% url 'body:details' %}"><h3>{{ post.heading }}</h3></a>
+       <a href="{% url 'body:details' %}"><h3>{{ post.designation }}</h3></a>
+       {% if request.user.cr %}
+       <div class="#">
+          <a href="{% url 'body:change' post.pk %}">(edit)</a>
+       </div>
+       {% endif %}
+
        <img src="/media/{{ post.image }}" height="180px" width="180px">
      </div>
      <p>Name: {{ post.name }}</p>

@@ -1,47 +1,71 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block main %}
-<h2>Search Results</h2>
+<link rel="stylesheet" href="{% static 'notes/css/classNotes.css' %}">
+<link rel="stylesheet" href="{% static 'clubs/css/clubs.css' %}">
+<div class="search">
+  <h1>Search Results</h1>
 
+</div>
+<div class="post">
+  {% if final %}
+  {% for post in final %}
+  <h4>{{post.heading }}</h4>
+  {% if post.pdf %}
+  <div class="pdf">
+    <a href="/media/{{ post.pdf }}"><p>PDF LINK:   {{ post.heading }}</p></a>
+  </div>
+  {% endif %}
+  {% if post.image %}
+  <div class="image ">
+    <a href="/media/{{ post.image }}"><p>{{ post.heading }}</p></a>
+    <img src="/media/{{ post.image }}" height="200px" width="200px">
+  </div>
+  {% endif %}
+  {% if post.link %}
+  <div class="link">
+    <a href="{{post.link}}">Link to file   "{{post.heading}}"</a>
+  </div>
+  {% endif %}
+  {% endfor %}
 
-{% if Results %}
-<h3>Results for <b>{{ request.GET.q }}</b> </h3>
-<br> <br>
-{% for result in Results %}
-{% if result.heading %}
-{% for detail in DetailsResults %}
-{% if result.post.heading == detail.post.heading %}
-<a href="/clubs/{{ result.post.heading }}">{{ detail.heading }}</a>
-
-{% endif %}
+</div>
+{% elif EventsResults %}
+{% for post in EventsResults %}
+<div class="post">
+<a href="{% url 'clubs:new' post.post.post.pk %}"><h5>Club Name: {{post.post.post.heading}}</h5></a>
+  <h6>Category: {{post.post.heading}}</h6>
+  <div class=" new col-auto">
+    <div class="">
+     <p> {{post.heading}}</p>
+   </div>
+    <div class="circle">
+      <p>{{post.date|date:"M dS"}}</p>
+      <p>{{post.date|date:"D"}}</p>
+      <p>{{post.time|time:"H:iA"}}</p>
+    </div>
+      {% if post.image %}
+    <div class="">
+       <img src="/media/{{ event.image }}" height="150px" width="150px">
+    </div>
+      {% endif %}
+      {% if post.text %}
+    <div class="">
+      <p>{{post.text}}</p>
+    </div>
+      {% endif %}
+  </div>
+</div>
 {% endfor %}
-<a href="/mcq/{{ result.heading }}"><p>{{ result.heading }}</p></a>
-
-
-{% endif %}
-{% if result.question %}
-<a href = "{{ result.subject }}#{{ result.topic.pk }}" ><p >{{ result.question }}</p></a>
-
-{% endif %}
-{% if result.image %}
-""<a href="/media/{{ result.image }}"> <img src="/media/{{ result.image }}" alt="" height="100px" width="100px"></a>
-{% endif %}
-{% if result.pdf %}
-<embed  src="/media/{{ result.pdf }}" width="100" height="100">
-{% elif result.ebooks_pdf %}
-<embed  src="/media/{{ result.ebooks_pdf }}" width="100" height="100">
-{% elif result.lectures_pdf %}
-<embed  src="/media/{{ result.lectures_pdf }}" width="100" height="100">
-{% elif result.papers_pdf %}
-<embed  src="/media/{{ result.papers_pdf }}" width="100" height="100">
-{% else %}
-{% endif %}
-<p>{{ result.text }}</p>
-
-
+{% elif DetailsResults %}
+{% for post in DetailsResults %}
+<div class="post">
+<a href="{% url 'clubs:new' post.post.pk %}"><h2>Club Name: {{post.post.heading}}</h2></a>
+  <h5>Category: {{post.heading}}</h5>
+</div>
 {% endfor %}
 {% else %}
-<p>No results for your query</p>
+<h4>No Results</h4>
 {% endif %}
-
+<p>Number of results: {{length}}</p>
 {% endblock %}

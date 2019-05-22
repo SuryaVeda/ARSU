@@ -1,0 +1,110 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'clubs/css/clubs.css' %}">
+
+<div class="dropdown show butt">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Clubs
+  </a>
+
+  <div class="dropdown-menu men" aria-labelledby="dropdownMenuLink">
+    {% for club in clubs%}
+  <a class="dropdown-item" href="{% url 'clubs:new' club.pk %}">{{ club.heading }} </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="dropdown show ass">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Cat
+  </a>
+
+  <div class="dropdown-menu men" aria-labelledby="dropdownMenuLink">
+    {% for detail in details %}
+  <a class="dropdown-item" href="#{{detail.pk}}">{{ detail.heading }} </a>
+    {% endfor %}
+  </div>
+</div>
+
+
+  {% if request.user.cr %}
+  <div class="lolo">
+    <p>{{club.heading}}<a href="{% url 'clubs:cat' club.pk %}"> <img src="/media/images/plus.png" height ="20px" width = "20px"> </a></p>
+  </div>
+  {% elif request.user.student %}
+  <div class="lolo">
+    <p>{{club.heading}}</p>
+  </div>
+  {% elif request.user.outsider %}
+  <div class="lolo">
+      <p>{{club.heading}} </p>
+
+  </div>
+  {% else %}
+  <div class="#">
+    <p>Hello</p>
+  </div>
+  {% endif %}
+{% for post in details %}
+<div class="category">
+  <ul>
+    <li id="{{post.pk}}">{{post.heading}}</li>
+  </ul>
+</div>
+{% if post.img %}
+<div class="ima">
+  <img src="/media/{{post.img}}" height="400px" width="600px">
+</div>
+{% endif %}
+
+   <div class="eve container-fluid">
+     {% if request.user.student %}
+     <h4>Events<a href="{% url 'clubs:EventForm' post.pk %}"> <img src="/media/images/plus.png" height ="20px" width = "20px"> </a></h4>
+     {% elif request.user.outsider %}
+     <h4>Events</h4>
+     {% else %}
+     <div class="#">
+       <p>Hello</p>
+     </div>
+     {% endif %}
+    <div class="row">
+      {% for event in events %}
+        {% if event.post.heading == post.heading %}
+      <div class=" new col-lg-3 col-auto">
+        <div class="#">
+          {% if request.user.student %}
+          <p> {{event.heading}}<a href="{% url 'clubs:delete' event.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a></p>
+          {% elif request.user.outsider %}
+          <p>{{event.heading}}</p>
+          {% else %}
+          <div class="#">
+            <p>Hello</p>
+          </div>
+          {% endif %}
+       </div>
+        <div class="circle">
+          <p>{{event.date|date:"M dS"}}</p>
+          <p>{{event.date|date:"D"}}</p>
+          <p>{{event.time|time:"H:iA"}}</p>
+        </div>
+          {% if event.image %}
+        <div class="">
+           <img src="/media/{{ event.image }}" height="150px" width="150px">
+        </div>
+          {% endif %}
+          {% if event.text %}
+        <div class="">
+          <p>{{event.text}}</p>
+        </div>
+          {% endif %}
+      </div>
+      {% endif %}
+    {% endfor %}
+    </div>
+   </div>
+
+{% endfor %}
+{% endblock %}
+{% block js %}
+{% endblock %}

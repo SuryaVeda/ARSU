@@ -1,22 +1,30 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Academic, NonAcademic, HospitalNews, CampusNews
+from .models import Schedule, Attendance, Results, NonAcademic, CampusNews
 
-class AcademicForm(ModelForm):
+class ScheduleForm(ModelForm):
     #image = forms.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
     class Meta:
-        model = Academic
-        fields = ['batches',  'heading','pdf', 'image', 'text']
+        model = Schedule
+        fields = ['heading','pdf', 'image', 'text']
+
+class AttendanceForm(ModelForm):
+    #image = forms.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
+    class Meta:
+        model = Attendance
+        fields = ['heading','pdf', 'image', 'text']
+class ResultsForm(ModelForm):
+    #image = forms.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
+    class Meta:
+        model = Results
+        fields = ['heading','pdf', 'image', 'text']
+
 
 class NAcademicForm(ModelForm):
     class Meta:
         model = NonAcademic
         fields = ['pdf', 'image', 'heading', 'text']
 
-class HospitalNewsForm(ModelForm):
-    class Meta:
-        model = HospitalNews
-        fields = ['pdf', 'image', 'heading', 'file', 'summary', 'url']
 class CampusNewsForm(ModelForm):
     class Meta:
         model = CampusNews

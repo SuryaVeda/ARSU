@@ -6,8 +6,10 @@
     <meta name="aiims rishikesh" content="e-books">
     <title>Aiims rishikesh student union website</title>
     <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'home/css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Sree+Krushnadevaraya" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body  class="container-fluid">
     <div class="heading container-fluid">
@@ -27,14 +29,15 @@
            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navContents">
+          {% if request.user.student  %}
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="{% url 'home:home' %}">Home <!--span class="sr-only">(current)</span--></a>
             <a class="nav-item nav-link active" href="{% url 'body:body' %}">Body</a>
             <a class="nav-item nav-link active" href="{% url 'notes:notes' %}">ClassNotes</a>
             <a class="nav-item nav-link active" href="{% url 'events:events' %}">Events</a>
             <a class="nav-item nav-link active" href="{% url 'clubs:clubs' %}">Clubs</a>
+            <a class="nav-item nav-link active" href="{% url 'TravelGuide:travel' %}">Travel</a>
             <a class="nav-item nav-link active cc" href="{% url 'mcq:sticky' %}">MCQ</a>
-
 {% if user.is_authenticated %}
            <form class="form-inline search" method="get" action="{% url 'home:search' %}" value = "{{ request.GET.q }}">
               <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
@@ -54,7 +57,7 @@
            <button class="btn btn-secondary dropdown-toggle nav-item nav-link active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/media/images/p.png" height="20px" width="20px" >
                </button>
                  <div class="dropdown-menu login" aria-labelledby="dropdownMenuButton">
-                   <a class="dropdown-item" href="#">{{ user.username }}</a>
+                   <a class="dropdown-item" href="{% url 'accounts:profile' %}">{{ request.user.username }}</a>
                    <a class="nav-item nav-link active dropdown-item" href="/accounts/logout">Logout</a>
           {% else %}
                    <a class="nav-item nav-link active dropdown-item" href="/accounts/login">Login</a>
@@ -63,21 +66,55 @@
           </div>
 
           </div>
+          {% elif request.user.outsider %}
+           {% if user.is_authenticated %}
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'clubs:clubs' %}">Clubs</a>
+            <a class="nav-item nav-link active" href="{% url 'TravelGuide:travel' %}">Travel</a>
+            <a class="nav-item nav-link active cc" href="{% url 'mcq:sticky' %}">MCQ</a>
+            <div class="dropdown">
+             <button class="btn btn-secondary dropdown-toggle nav-item nav-link active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/media/images/p.png" height="20px" width="20px" >
+                 </button>
+                   <div class="dropdown-menu login" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="#">{{ request.user.username }}</a>
+                     <a class="nav-item nav-link active dropdown-item" href="/accounts/logout">Logout</a>
+               {% else %}
+                     <a class="nav-item nav-link active dropdown-item" href="/accounts/login">Login</a>
+              {% endif %}
+                   </div>
+            </div>
+          {% else %}
+          <div class="#">
+            <p>Hello!</p>
+          </div>
+          {% endif %}
         </div>
      </nav>
    </div>
     {% block main %}
     {% endblock %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script type="text/javascript" src="{% static 'home/js/base.js' %}">
 
   </script>
+  {% block js %}
+  {% endblock %}
    </body>
    <footer>
      <div class="socialMedia container-fluid">
-         <p>Hello, You can follow us!</p>
+         <p>Follow us!</p>
+         <div class="socialMediaLinks">
+           <a href="https://www.facebook.com/pages/category/Community-College/AIIMS-Rishikesh-Students-Welfare-Body-1575457229221294/" class="fa fa-facebook"></a>
+           <a href="https://www.google.co.in/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwjCz47Fo6_iAhWLu48KHUl3BtgQFjACegQIBhAB&url=https%3A%2F%2Fwww.instagram.com%2Faiims_rishikesh_students%2F&usg=AOvVaw2Er4jmcBsqe8jcGqAIB-ND" class="fa fa-instagram"></a>
+           <a href="https://www.youtube.com/channel/UCZFBjiFu0HNn2Dp2oqloeAw" class="fa fa-youtube"></a>
+
+        </div>
+        <div class="creator">
+          <p>created by A.S </p>
+        </div>
          {% block footer %}
          {% endblock %}
      </div>

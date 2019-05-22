@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.conf import settings
 from django.views.static import serve
-
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
@@ -29,6 +29,9 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('welcome/', include('welcome.urls')),
     path('mcq/', include('mcq.urls')),
+    path('travel/', include('TravelGuide.urls')),
+    path('^', include('django.contrib.auth.urls')),
+
 ]
 
 if settings.DEBUG:

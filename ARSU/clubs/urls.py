@@ -6,10 +6,10 @@ app_name = 'clubs'
 
 urlpatterns = [
 path('', views.clubs, name = 'clubs'),
-path('FineArts', views.FineArts, name = 'Fine Arts'),
-path('cultural', views.cultural, name = 'Cultural Activites'),
-path('literary', views.literary, name = 'Literary Activites'),
-path('sports', views.sports, name = 'Sports'),
-path('Magazine', views.magazine, name = 'Magazine'),
-path('EventForm', views.posts, name = 'EventForm')
+path('EventForm/<int:id>', views.posts, name = 'EventForm'),
+path('clubForm', views.addClub, name = 'addClubs'),
+path('catForm/<int:id>', views.addCategories, name = 'cat'),
+path('<int:id>', views.newClub, name = 'new'),
+path('del/<int:id>', views.event_delete, name = 'delete'),
+
 ]

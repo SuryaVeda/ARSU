@@ -1,7 +1,7 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block main %}
-<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+<link rel="stylesheet" href="{% static 'clubs/css/clubs.css' %}">
   <!--div class="row">
     <div class="circle col-auto">
       <p>Apr.</p>
@@ -11,25 +11,32 @@
   <div class="lolo">
     <p>Events</p>
   </div>
-  <div class="grid-container ">
+   <div class="a">
+     <b>in next week..</b>
+   </div>
+  <div class="row">
     {% for event in events %}
-  <div class="grid-item">
-    <div class="circle"><p>{{ event.month }}</p>
-    <b>{{ event.date }}</b>
-   </div>
-   <div class="text">
-    <a href="{% url 'events:details' %}"> <p>{{ event.heading }}</p></a>
-     {% if event.image %}
-     <img src="/media/{{ event.image }}" height="150px" width="150px">
-     {% endif %}
-     {% if event.text %}
-     <p>{{ event.text }}</p>
-     {% endif %}
-   </div>
-  </div>
+    <div class=" new col-lg-3 col-auto col-sm-12">
+      <div class="">
+       <p> {{event.heading}}</p>
+     </div>
+      <div class="circle">
+        <p>{{event.date|date:"M dS"}}</p>
+        <p>{{event.date|date:"D"}}</p>
+        <p>{{event.time|time:"H:iA"}}</p>
+      </div>
+        {% if event.image %}
+      <div class="">
+         <img src="/media/{{ event.image }}" height="150px" width="150px">
+      </div>
+        {% endif %}
+        {% if event.text %}
+      <div class="">
+        <p>{{event.text}}</p>
+      </div>
+        {% endif %}
+    </div>
   {% endfor %}
-
-
   </div>
 
 

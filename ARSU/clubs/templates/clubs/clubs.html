@@ -1,17 +1,29 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block main %}
-<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+<link rel="stylesheet" href="{% static 'clubs/css/clubs.css' %}">
 <div class="container-fluid main">
+  {% if request.user.student %}
   <div class="lolo">
-      <p>Clubs</p>
+      <p>Clubs <a href="{% url 'clubs:addClubs' %}"> <img src="/media/images/plus.png" height ="20px" width = "20px"> </a> </p>
+
   </div>
-  <div class="grid-container">
+  {% elif request.user.outsider %}
+  <div class="lolo">
+      <p>Clubs </p>
+
+  </div>
+  {% else %}
+  <div class="#">
+    <p>Hello</p>
+  </div>
+  {% endif %}
+  <div class="row">
     {% for club in clubs %}
-    <div class="grid-item">
-        <a  class="text" href="/clubs/{{ club.text }}"><h4>{{ club.heading }}</h4></a>
+    <div class="col-lg-4 col-auto club">
+        <a  class="text" href="{% url 'clubs:new' club.pk %}"><h4>{{ club.heading }} </h4></a>
       {% if club.image %}
-        <a href="/clubs/{{ club.text }}"><img src="/media/{{ club.image }}" height="200px" width="300px"></a>
+        <a href="{% url 'clubs:new' club.pk %}"><img src="/media/{{ club.image }}" height="200px" width="300px"></a>
       {% endif %}
     </div>
     {% endfor %}

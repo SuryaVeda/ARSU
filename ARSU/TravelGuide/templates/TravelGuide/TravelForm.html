@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'home/css/form.css' %}">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="table">
+
+          <table>
+            {{ form.as_table }}
+          </table>
+        </div>
+
+          <p>Add one image now, You can add multiple later!</p>
+          <button type="submit" name="button">submit</button>
+        </form>
+{% endblock %}

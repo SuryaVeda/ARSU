@@ -1,0 +1,187 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'mcq/css/questions.css' %}">
+{% if request.user.student %}
+<div class="dropdown cont ">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Contents</button>
+   <div class="dropdown-menu list" aria-labelledby="dropdownMenuButton">
+     <form class="  dropdown-item" method="get" action="{% url 'notes:search' %}" value = "{{ request.GET.q }}">
+        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
+        <div id="search">
+          <button class="btn  my-2 my-sm-0 " type="submit" value="Search" >Search</button>
+        </div>    </form>
+    {% for sub in subjects %}
+  <a class="dropdown-item" href="{% url 'mcq:hola' sub.pk %}">{{ sub.heading }} </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="dropdown butt container-fluid">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Topics
+  </button>
+   <div class="dropdown-menu list" aria-labelledby="dropdownMenuButton">
+     <form class="  dropdown-item" method="get" action="{% url 'mcq:search' %}" value = "{{ request.GET.q }}">
+        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search MCQ's" aria-label="Search" value="{{ request.GET.q }}">
+        <div id="search">
+          <button class="btn  my-2 my-sm-0 " type="submit" value="Search" >Search</button>
+        </div>
+    </form>
+    {% for topic in topics %}
+  <a class="dropdown-item" href="#{{ topic.pk }}">{{ topic.heading }} </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="ff ">
+  <h2>{{sub.heading}}</h2>
+  <a href="{% url 'mcq:addTopic' sub.pk %}"><b>Add Topics</b>
+  <img src="/media/images/plus.png" height="10px" width="10px"></a>
+</div>
+{% elif request.user.outsider %}
+<div class="ff ">
+  <h2>{{sub.heading}}</h2>
+</div>
+{% else %}
+<div class="#">
+  <p>Hello</p>
+</div>
+{% endif %}
+
+  {% for post in topics %}
+  {% if request.user.student %}
+  <div class="f" id="{{post.pk}}">
+    <ol>
+      <li> <h3>{{ post.heading }}</h3> </li>
+      <a href="{% url 'mcq:forms' post.pk sub.pk %}"><p> Add Mcqs<img src="/media/images/plus.png" height="10px" width="10px"></p></a>
+      <a href="{% url 'mcq:card' post.pk sub.pk %}"><p> Add flashcards<img src="/media/images/plus.png" height="10px" width="10px"></p></a>
+      <a href="{% url 'mcq:fact' post.pk sub.pk %}"><p> Add facts<img src="/media/images/plus.png" height="10px" width="10px"></p></a>
+    </ol>
+  </div>
+  {% elif request.user.outsider %}
+  <div class="f" id="{{post.pk}}">
+    <ol>
+      <li> <h3>{{ post.heading }}</h3> </li>
+    </ol>
+  </div>
+  {% else %}
+  <div class="#">
+    <p>Hello</p>
+  </div>
+  {% endif %}
+
+  <div id="myCarousel{{post.pk}}" class="carousel slide" data-ride="carousel" data-interval= false>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="carousel-item text-center active">
+        <div class="questionOne">
+           <p>Questions</p>
+           <img class="#" src="/media/images/q.jpg" >
+        </div>
+      </div>
+      {% if mcqs %}
+      {% for mcq in mcqs %}
+      {% if mcq.topic.heading == post.heading %}
+      <div class="carousel-item text-center">
+        <div class="question ">
+            <p>Q)   {{ mcq.question }}</p>
+        </div>
+        <div class="option question">
+          <ol>
+            <li>{{mcq.option_one}}</li>
+            <li>{{mcq.option_two}}</li>
+            <li>{{mcq.option_three}}</li>
+            <li>{{mcq.option_four}}</li>
+          </ol>
+        </div>
+        {% if mcq.q_image %}
+        <div class="images ">
+          <img  src="/media/{{ mcq.q_image }}" alt="First slide" >
+        </div>
+        {% endif %}
+
+      <div class="wrapper ">
+        <button class="btn  my-2 my-sm-0" type="submit" value="Search" >Answer</button>
+      </div>
+      <div class="answer ">
+        <h3>Answer</h3>
+        <p>{{ mcq.answer }}</p>
+        {% if mcq.a_image %}
+        <img  src="/media/{{ mcq.a_image }}" alt="First slide" >
+        {% endif %}
+       </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+      {% if cards %}
+      {% for card in cards %}
+      {% if card.topic.heading == post.heading %}
+      <div class="carousel-item text-center">
+        <div class="question ">
+            <p>{{ card.question }}</p>
+        </div>
+        {% if card.q_image %}
+        <div class="images ">
+          <img  src="/media/{{ mcq.q_image }}" alt="First slide" >
+        </div>
+        {% endif %}
+
+      <div class="wrapper ">
+        <button class="btn  my-2 my-sm-0" type="submit" value="Search" >Answer</button>
+      </div>
+      <div class="answer ">
+        <h3>Answer</h3>
+        <p>{{ card.answer }}</p>
+        {% if card.a_image %}
+        <img  src="/media/{{ card.a_image }}" alt="First slide" >
+        {% endif %}
+       </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+      {% if facts %}
+      {% for mcq in facts %}
+      {% if mcq.topic.heading == post.heading %}
+      <div class="carousel-item text-center">
+        <div class="facts">
+          <h5>Facts</h5>
+          <p>{{ mcq.answer }}</p>
+        </div>
+
+        {% if mcq.image %}
+        <div class="images ">
+          <img  src="/media/{{ mcq.image }}" alt="First slide" >
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev left" href="#myCarousel{{post.pk}}" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next right" href="#myCarousel{{post.pk}}" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  {% endfor %}
+
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{% static 'mcq/js/questions.js' %}">
+
+</script>
+{% endblock %}

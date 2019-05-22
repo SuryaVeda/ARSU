@@ -8,3 +8,10 @@ def student_required(function):
         else:
             raise PermissionDenied
     return wrap
+def cr_required(function):
+    def wrap(request, args=None, **kwargs):
+        if request.user.cr == True:
+            return function(request, **kwargs)
+        else:
+            raise PermissionDenied
+    return wrap

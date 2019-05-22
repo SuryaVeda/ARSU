@@ -5,7 +5,9 @@ app_name = 'notes'
 urlpatterns = [
 path('', views.notes, name = 'notes'),
 path('subject_form', views.subject_form, name = 'subject'),
-path('form', views.posts, name = 'posts'),
+path('Eform/<int:id>', views.Eposts, name = 'Epost'),
+path('Pform/<int:id>', views.Pposts, name = 'Ppost'),
+path('Lform/<int:id>', views.Lposts, name = 'Lpost'),
 path('search', views.search, name = 'search'),
 
 ]

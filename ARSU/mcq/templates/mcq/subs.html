@@ -9,7 +9,7 @@
   <div class="grid-container">
     {% for sub in subjects %}
     <div class="grid-item">
-        <a  class="text" href="/mcq/{{ sub.heading }}"><h4>{{ sub.heading }}</h4></a>
+          <a  class="text" href="{% url 'mcq:hola' sub.pk %}"><h4>{{ sub.heading }}</h4></a>
       {% if sub.image %}
         <a href = "/mcq/{{ sub.heading }}" ><img src="/media/{{ sub.image }}" height="200px" width="300px"></a>
       {% endif %}

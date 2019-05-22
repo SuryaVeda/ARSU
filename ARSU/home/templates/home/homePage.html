@@ -3,24 +3,22 @@
 {% block main %}
 
 <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
-{% if user.is_authenticated %}
-
-<div id="campusPhotos" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="{% static 'home/images/img2.png'%}" alt="First slide" height="400px" width="100%">
     </div>
     {% for slide in sliders %}
     <div class="carousel-item">
-      <img class="d-block w-100" src="/media/{{ slide.image }}"  height="400px" width="100%">
+      <img class="d-block w-100" src="/media/{{ slide.image }}" height="400px" width="100%">
     </div>
     {% endfor %}
   </div>
-  <a class="carousel-control-prev" href="#campusPhotos" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#campusPhotos" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
@@ -29,301 +27,146 @@
       <p>AIIMS Rishikesh Student Union first organised in October 2018. </p>
       <p>The aim of this committe is to develop students interest and hobbies and to improve each others academic performance and personal development.</p>
 </div>
-<div class="Imp container-fluid">
-
-  <section class="impHeading container-fluid">
-    <h4>Important Notifications</h4>
-    <div class="academic container-fluid">
-      <div class="impHeading container-fluid">
-        <div class="row">
-          <div class="col-auto">
-            <h5>Academic</h5>
-          </div>
-          <div class="col-auto">
-            <a href="{% url 'home:Acad' %}"><img src="{% static 'home/images/plus.png' %}" height = "10px" width = "10px" > </a>
-          </div>
-        </div>
-      </div>
-      <div class="container-fluid">
-
-        <div class="dropdown butt container-fluid">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Batch
-          </button>
-
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {% for bat in batch %}
-              <button class="dropdown-item {{ bat.jq }}">{{ bat.name }}</button>
-            {% endfor %}
-          </div>
-        </div>
-        {% for bat in batch %}
-        <div id="div1" class="{{ bat.css }}">
-            {{ bat.name }}
-
-            <div class="image row">
-                {% for post in Aposts %}
-                {% ifequal bat.name post.batches.name %}
-                {% if post.image %}
-                <div class="col-auto col-lg-2">
-                 <a href="/media/{{ post.image }}"> <img src="/media/{{ post.image }}" alt="" height="100px" width="100px"></a>
-                  <a href="/media/{{ post.image }}"> <p>{{ post.heading }}</p></a>
-                  <p>{{ post.text }}</p>
-                  {% if post.user %}
-                  <p>{{ post.user }}</p>
-                  {% else %}
-                  <p>Anonymous</p>
-                  {% endif %}
-                </div>
-                {% else %}
-                {{ post.delete }}
-                {% endif %}
-                {% endifequal %}
-              {% endfor %}
-            </div>
-            <div class="pdfs row">
-                {% for post in Aposts %}
-                {% ifequal bat.name post.batches.name %}
-                {% if post.pdf %}
-                <div class="col-auto col-lg-2">
-                  <embed  src="/media/{{ post.pdf }}" width="100" height="100">
-                 <a href="/media/{{ post.pdf }}"><p>{{ post.heading }}</p></a>
-                 <p>{{ post.text }}</p>
-                 {% if post.user %}
-                 <p>{{ post.user }}</p>
-                 {% else %}
-                 <p>Anonymous</p>
-                 {% endif %}
-               </div>
-                {% else %}
-                {{ post.delete }}
-                {% endif %}
-                {% endifequal %}
-              {% endfor %}
-            </div>
-            <div class="text row">
-              {% for post in Aposts %}
-              {% ifequal bat.name post.batches.name %}
-                {% if post.pdf %}
-                {{ post.delete }}
-                {% elif post.image %}
-                {{ post.delete }}
-                {% else %}
-                <ul>
-                  <li>{{ post.heading }}</li>
-                  {% if post.user %}
-                  <p>{{ post.user }}</p>
-                  {% else %}
-                  <p>Anonymous</p>
-                  {% endif %}
-                  <p>{{ post.text }}</p>
-                </ul>
-                {% endif %}
-                {% endifequal %}
-              {% endfor %}
-            </div>
-        </div>
-        {% endfor %}
-      </div>
-
-
-    <div class="nonAcademic container-fluid">
-      <div class="impHeading container-fluid">
-        <div class="row">
-          <div class="col-auto">
-            <h5>Non Academic</h5>
-          </div>
-          <div class="col-auto">
-            <a href="{% url 'home:NAcad' %}"><img src="{% static 'home/images/plus.png' %}" height = "10px" width = "10px" > </a>
-          </div>
-        </div>
-      </div>
-      <div class="container-fluid">
-       <div class="image row">
-         {% for post in NAposts %}
-           {% if post.image %}
-           <div class="col-auto col-lg-2">
-            <a href="/media/{{ post.image }}"> <img src="/media/{{ post.image }}" alt="" height="100px" width="100px"></a>
-             <a href="/media/{{ post.image }}"> <p>{{ post.heading }}</p></a>
-             {% if post.user %}
-             <p>{{ post.user }}</p>
-             {% else %}
-             <p>Anonymous</p>
-             {% endif %}
-           </div>
-           {% else %}
-           {{ post.delete }}
-           {% endif %}
-         {% endfor %}
-       </div>
-       <div class="pdfs row">
-         {% for post in NAposts %}
-           {% if post.pdf %}
-           <div class="col-auto col-lg-2">
-             <embed  src="/media/{{ post.pdf }}" width="100" height="100">
-            <a href="/media/{{ post.pdf }}"><p>{{ post.heading }}</p></a>
-            {% if post.user %}
-            <p>{{ post.user }}</p>
-            {% else %}
-            <p>Anonymous</p>
-            {% endif %}
-            </div>
-           {% else %}
-           {{ post.delete }}
-           {% endif %}
-         {% endfor %}
-
-       </div>
-      </div>
+<div class="academic">
+  <h3>Academic Notifications</h3>
+  {{ batch.name }}
+  <div class="schedule sched">
+    <h4>Schedules <a href="{% url 'home:schedule'%}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
+    {% for post in x %}
+    <div class="post sche">
+      {% if request.user.cr %}
+      <h4>{{ post.heading }} <a href="{% url 'home:schedule_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a>  </h4>
+      {% elif request.user.student %}
+      <h4>{{ post.heading }}  </h4>
+      {% else %}
+      <h1>Hello</h1>
+      {% endif %}
+      {% if post.pdf %}
+      <a href="/media/{{ post.pdf }}">pdf</a>
+      {% endif %}
+      {% if post.image %}
+      <a href="/media/{{ post.image }}"> <img src="/media/{{post.image}}" height="200px" width = "200px"> </a>
+      {% endif %}
+      {% if post.text %}
+      <p>{{post.text}}</p>
+      {% endif %}
     </div>
-  </section>
-</div>
-<div class="hospitalNews container-fluid">
-  <section class="impHeading container-fluid">
-    <div class="row">
-      <div class="col-auto">
-        <h4>Hospital News</h4>
-      </div>
-      <div class="col-auto">
-        <a href="{% url 'home:Hosp' %}"><img src="{% static 'home/images/plus.png' %}" height = "10px" width = "10px" > </a>
-      </div>
-    </div>
-   <div class="container-fluid">
-    <div class="file row">
-      {% for post in Hposts %}
-        {% if post.file %}
-        <div class="col-auto col-lg-2">
-          <embed  src="/media/{{ post.file }}" width="100" height="100">
-         <a href="/media/{{ post.file }}"><p>{{ post.heading }}</p></a>
-         {% if post.user %}
-         <p>{{ post.user }}</p>
-         {% else %}
-         <p>Anonymous</p>
-         {% endif %}
-         </div>
-        {% else %}
-        {{ post.delete }}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="image row">
-      {% for post in Hposts %}
-        {% if post.image %}
-        <div class="col-auto col-lg-2">
-          <embed  src="/media/{{ post.image }}" width="100" height="100">
-         <a href="/media/{{ post.image }}"><p>{{ post.heading }}</p></a>
-         {% if post.user %}
-         <p>{{ post.user }}</p>
-         {% else %}
-         <p>Anonymous</p>
-         {% endif %}
-        </div>
-        {% else %}
-        {{ post.delete }}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="pdfs row">
-      {% for post in Hposts %}
-        {% if post.pdf %}
-        <div class="col-auto col-lg-2">
-          <embed  src="/media/{{ post.pdf }}" width="100" height="100">
-         <a href="/media/{{ post.pdf }}"><p>{{ post.heading }}</p></a>
-         {% if post.user %}
-         <p>{{ post.user }}</p>
-         {% else %}
-         <p>Anonymous</p>
-         {% endif %}
-        </div>
-        {% else %}
-        {{ post.delete }}
-        {% endif %}
-      {% endfor %}
-    </div>
-
+    {% endfor %}
+   <div id="loadMore1" class="down">
+    <a href="#"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></a>
    </div>
-  </section>
+   {% include 'home/pagination.html' %}
+
+  </div>
+  <div class="schedule results">
+
+    <h4>Results<a href="{% url 'home:results'%}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
+    {% for post in z %}
+    <div class="post resu">
+      {% if request.user.cr %}
+      <h4>{{ post.heading }} <a href="{% url 'home:results_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
+      {% elif request.user.student %}
+      <h4>{{ post.heading }}  </h4>
+      {% else %}
+      <h1>Hello</h1>
+      {% endif %}
+      {% if post.pdf %}
+      <a href="/media/{{ post.pdf }}">pdf</a>
+      {% endif %}
+      {% if post.image %}
+      <a href="/media/{{ post.image }}"> <img src="/media/{{post.image}}" height="200px" width = "200px"> </a>
+      {% endif %}
+      {% if post.text %}
+      <p>{{post.text}}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div id="loadMore2" class="down">
+     <a href="#"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></a>
+    </div>
+  </div>
+  <div class="schedule attendance">
+    <h4>Attendance<a href="{% url 'home:attendance' %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
+    {% for post in y %}
+    <div class="post atte">
+      {% if request.user.cr %}
+      <h4>{{ post.heading }} <a href="{% url 'home:attendance_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
+      {% elif request.user.student %}
+      <h4>{{ post.heading }}  </h4>
+      {% else %}
+      <h1>Hello</h1>
+      {% endif %}
+      {% if post.pdf %}
+      <a href="/media/{{ post.pdf }}">pdf</a>
+      {% endif %}
+      {% if post.image %}
+      <a href="/media/{{ post.image }}"> <img src="/media/{{post.image}}" height="200px" width = "200px"> </a>
+      {% endif %}
+      {% if post.text %}
+      <p>{{post.text}}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div id="loadMore3" class="down">
+     <a href="#"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></a>
+    </div>
+  </div>
 </div>
-<div class="campusNews container-fluid">
-  <section class="impHeading container-fluid">
-    <div class="row">
-      <div class="col-auto">
-        <h4>Campus News</h4>
-      </div>
-      <div class="col-auto">
-        <a href="{% url 'home:Camp' %}"><img src="{% static 'home/images/plus.png' %}" height = "10px" width = "10px" > </a>
-      </div>
-    </div>
-   <div class="container-fluid">
-    <div class="file row">
-      {% for post in Cposts %}
-        {% if post.file %}
-        <div class="col-auto col-lg-2">
-          <embed  src="/media/{{ post.file }}" width="100" height="100">
-         <a href="/media/{{ post.file }}"><p>{{ post.heading }}</p></a>
-         {% if post.user %}
-         <p>{{ post.user }}</p>
-         {% else %}
-         <p>Anonymous</p>
-         {% endif %}
-        </div>
-        {% else %}
-        {{ post.delete }}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="image row">
-      {% for post in Cposts %}
-        {% if post.image %}
-        <div class="col-auto col-lg-2">
-          <embed  src="/media/{{ post.image }}" width="100" height="100">
-         <a href="/media/{{ post.image }}"><p>{{ post.heading }}</p></a>
-         {% if post.user %}
-         <p>{{ post.user }}</p>
-         {% else %}
-         <p>Anonymous</p>
-         {% endif %}
-        </div>
-        {% else %}
-        {{ post.delete }}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="pdfs row">
-      {% for post in Cposts %}
-        {% if post.pdf %}
-        <div class="col-auto col-lg-2">
-          <embed  src="/media/{{ post.pdf }}" width="100" height="100">
-         <a href="/media/{{ post.pdf }}"><p>{{ post.heading }}</p></a>
-         {% if post.user %}
-         <p>{{ post.user }}</p>
-         {% else %}
-         <p>Anonymous</p>
-         {% endif %}
-        </div>
-        {% else %}
-        {{ post.delete }}
-        {% endif %}
-      {% endfor %}
-    </div>
-    <div class="videos row">
-
-    </div>
-   </div>
-  </section>
+<div class="academic">
+  <h3>NonAcademic Notifications<a href="{% url 'home:NAcad' %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h3>
+  {% for post in a %}
+  <div class="post naca">
+    {% if request.user.cr %}
+    <h4>{{ post.heading }} <a href="{% url 'home:naca_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
+    {% elif request.user.student %}
+    <h4>{{ post.heading }}  </h4>
+    {% else %}
+    <h1>Hello</h1>
+    {% endif %}
+    {% if post.pdf %}
+    <a href="/media/{{ post.pdf }}">pdf</a>
+    {% endif %}
+    {% if post.image %}
+    <a href="/media/{{ post.image }}"> <img src="/media/{{post.image}}" height="200px" width = "200px"> </a>
+    {% endif %}
+    {% if post.text %}
+    <p>{{post.text}}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <div id="loadMore4" class="down">
+   <a href="#"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></a>
+  </div>
 </div>
-
+<div class="academic">
+  <h3>Campus News<a href="{% url 'home:Camp' %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h3>
+  {% for post in b %}
+  <div class="post camp">
+    {% if request.user.cr %}
+    <h4>{{ post.heading }} <a href="{% url 'home:camp_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
+    {% elif request.user.student %}
+    <h4>{{ post.heading }}  </h4>
+    {% else %}
+    <h1>Hello</h1>
+    {% endif %}
+    {% if post.pdf %}
+    <a href="/media/{{ post.pdf }}">pdf</a>
+    {% endif %}
+    {% if post.image %}
+    <a href="/media/{{ post.image }}"> <img src="/media/{{post.image}}" height="200px" width = "200px"> </a>
+    {% endif %}
+    {% if post.text %}
+    <p>{{post.text}}</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+  <div id="loadMore5" class="down">
+   <a href="#"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></a>
+  </div>
 </div>
-{% else %}
-<h4>You are not authenticated </h4>
-{% endif %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="{% static 'home/js/home.js' %}">
-
-</script>
-
-
 {% endblock %}
 {% block footer %}
-<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+<script src="{% static 'home/js/home.js' %}" type="text/javascript">
+
+</script>
 {% endblock %}

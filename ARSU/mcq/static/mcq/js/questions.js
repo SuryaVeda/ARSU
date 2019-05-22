@@ -7,14 +7,14 @@ $(".wrapper").click(function() {
 });
 
 
-$(".carousel-control-next").click(function() {
+$(".left").click(function() {
   $(".question").css("display", "block");
   $(".images").css("display", "block");
   $(".wrapper").css("display", "block");
   $(".answer").css("display", "none");
 });
 
-$(".carousel-control-prev").click(function() {
+$(".right").click(function() {
   $(".question").css("display", "block");
   $(".images").css("display", "block");
   $(".wrapper").css("display", "block");

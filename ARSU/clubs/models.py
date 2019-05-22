@@ -8,16 +8,16 @@ class Clubs(models.Model):
     text = models.CharField(max_length = 30, blank = True)
     def __str__(self):
         return self.heading
-class details(models.Model):
+class Categories(models.Model):
     post = models.ForeignKey(Clubs, on_delete=models.SET_NULL, null=True, blank=True)
     heading =models.CharField(max_length = 30, blank = True)
     img = models.ImageField(upload_to = 'clubs/images/%Y/%m/$D/', blank = True, default = None)
     def __str__(self):
         return self.heading
 class Events(models.Model):
-    post = models.ForeignKey(details, on_delete=models.SET_NULL, null=True, blank=True)
-    month = models.CharField(max_length = 6)
-    date = models.CharField(max_length = 6)
+    post = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True, blank=True)
+    date = models.DateField(blank = False, null = False)
+    time = models.TimeField(blank = False, null = False)
     heading = models.CharField(max_length = 30)
     text = models .CharField(max_length = 80, blank = True)
     image = models.ImageField(blank=True, null = True, upload_to = 'clubs/images/%Y/%m/$D/')

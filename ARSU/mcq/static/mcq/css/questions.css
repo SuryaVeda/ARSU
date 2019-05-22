@@ -1,9 +1,11 @@
 .butt{
-  float: right;
-
-  position: fixed;
-  left: 95%;
-  top: 70%;
+  float: left;
+}
+.carousel-item{
+height: 400px;
+}
+.facts h5{
+  text-decoration: underline;
 }
 .list{
   height: 400px;
@@ -16,10 +18,16 @@
     border-color: black;
     border-style: solid;
   }
-.contents{
-  position: fixed;
+.cont{
+  float: right;
+  right: 10%;
 }
-
+.left{
+  background-color: grey;
+}
+.right{
+  background-color: grey;
+}
 .ff{
   text-align: center;
   margin: 40px auto;
@@ -29,24 +37,31 @@
 .topics{
   font-family:"Comic Sans MS", cursive, sans-serif;
 }
-li{
+.f li{
   list-style-type: square;
 }
 .f{
   font-size: 25px;
+  margin: 60px auto;
+}
+.f p{
+  font-size: 15px;
 }
 .mm {
   height: 400px;
   width: 500px;
   margin: 90px auto;
-  border-color: black;
+  border-color: grey;
   border-style: solid;
+  overflow: scroll;
+
 }
 .box {
 
 }
 .question {
   margin-top: 30px;
+  overflow: auto;
 }
 .answer{
   display: none;
@@ -72,24 +87,11 @@ li{
 }
 .images{
   text-align: center;
+  overflow: auto;
 }
 .images img{
   height: 200px;
   width: 200px;
-}
-.carousel-control-prev{
-  background-color: black;
-  height: 40px;
-  width: 40px;
-  margin: 15% auto;
-
-}
-.carousel-control-next{
-  background-color: black;
-  height: 40px;
-  width: 40px;
-  margin: 15% auto;
-
 }
 .questionOne{
   font-size: 25px;
@@ -98,7 +100,7 @@ li{
 }
 .questionOne img{
   height: 300px;
-  width: 500px;
+  width: 300px;
 }
 
 @media screen and (max-width: 800px) {
@@ -129,30 +131,16 @@ li{
     height: 150px;
     width: 150px;
   }
-  .carousel-control-prev{
-    background-color: black;
-    height: 40px;
-    width: 40px;
-    margin-top: 98%;
-
-  }
-
-  .carousel-control-next{
-    background-color: black;
-    height: 40px;
-    width: 40px;
-    margin-top: 98%;
-  }
   .questionOne img{
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
   }
 
   .butt{
-    float: right;
     position: fixed;
-    left: 85%;
-    top: 90%;
+    left: 50%;
+    top: 10%;
+    z-index: 1;
   }
 
   .list{
@@ -161,5 +149,15 @@ li{
   overflow: scroll;
   background-color: grey;
   color: white;
+  }
+  .carousel-item{
+  height: 300px;
+  overflow: scroll;
+  width: 100%;
+  }
+  .cont{
+    float: left;
+    right: 0;
+
   }
 }

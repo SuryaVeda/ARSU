@@ -1,20 +1,4 @@
-.batFif{
-  display: none;
-}
-.batSix{
-  display: none;
-}
-.batSeven{
-  display: none;
-}
-.batEight{
-  display: none;
-}
-.batNine{
-  display: none;
-}
-.five{
-}
+
 .Introduction{
   text-align: center;
   font-family:"Comic Sans MS", cursive, sans-serif;
@@ -22,9 +6,45 @@
 }
 .academic {
   margin-top: 40px;
+  text-align: center;
 }
-.text {
-  margin: 40px 0 40px 0;
+.naca {
+  background-color: #ffbeb3;
+}
+.camp{
+  background-color: #ffffe6;
+}
+.academic h3 {
+  text-decoration: underline;
+}
+.schedule{
+  margin: 40px auto;
+  text-align: center;
+}
+.sched {
+  background-color: #ffffe6;
+}
+.results {
+  background-color: #e6e6ff ;
+}
+.attendance {
+  background-color: #ccffcc;
+}
+.post {
+  margin: 70px auto;
+  border-style: outset;
+  overflow: scroll;
+  border-color: white;
+}
+.post p {
+margin: 20px auto;
+}
+.down{
+  margin: 0 auto;
+  text-align: center;
+}
+.down:hover{
+  background-color: #262626;
 }
 .Imp {
   background-color: #ffffe6;
