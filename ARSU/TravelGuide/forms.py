@@ -3,6 +3,7 @@ from .models import Travel, Images
 
 
 class TravelForm(forms.ModelForm):
+    heading = forms.CharField(required = True)
     itinerary = forms.CharField(required = False, widget=forms.Textarea(attrs={"rows":5, "cols":20}))
     budget = forms.CharField(required = False,widget=forms.Textarea(attrs={"rows":5, "cols":20}))
     experience = forms.CharField(required = False,widget=forms.Textarea(attrs={"rows":5, "cols":20}))
