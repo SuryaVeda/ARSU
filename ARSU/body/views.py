@@ -40,7 +40,7 @@ def editForm(request, id):
     instance = Student.objects.get(id=id)
     form = Stu(instance=instance)
     if request.method == 'POST' :
-        form = Stu(request.POST, request.FILES or None, instance=instance)
+        form = Stu(request.POST or request.FILES or None, instance=instance)
         if form.is_valid():
             form.save()
             #username=form.cleaned_data.get('username')
