@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import slider
+from home.decorators import login_required
 # Create your views here.
+
+@login_required
 def welcome(request):
     template_name = 'welcome/welcome.html'
     slides = slider.objects.order_by('pk')
