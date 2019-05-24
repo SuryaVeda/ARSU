@@ -42,9 +42,19 @@ def editForm(request, id):
     if request.method == 'POST' :
         form = Stu(request.POST,request.FILES, instance=instance)
         if form.is_valid():
+                new = form.save(commit=False)
+                new.image = request.FILES('image')
+                form.save()
+                instance.image = form.image
+                instance.save()
+            else:
+                form.save()
+
+=======
             new = form.save(commit = False)
-           
-            new.save()        
+            new.image = request.FILES('image')
+            new.save()
+>>>>>>> edb879fcb310e65b7b9e8f1980f3e4646b7bc4cd
             #username=form.cleaned_data.get('username')
             #messages.success(request, f'Account created for {username}!')
             return redirect("body:body")
