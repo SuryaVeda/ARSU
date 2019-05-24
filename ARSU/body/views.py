@@ -19,7 +19,7 @@ def details(request):
 @login_required
 @cr_required
 def addStudent(request):
-    template_name = 'home/AcadForm.html'
+    template_name = 'accounts/table.html'
     form = Stu()
     if request.method == 'POST' :
         form = Stu(request.POST, request.FILES)
@@ -45,6 +45,8 @@ def editForm(request, id):
             if 'image' in request.FILES:
                 form.image = request.FILES['image']
                 form.save()
+                instance.image = form.image
+                instance.save()
             else:
                 form.save()
 
