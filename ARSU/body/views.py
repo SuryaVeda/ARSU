@@ -40,14 +40,11 @@ def editForm(request, id):
     instance = Student.objects.get(id=id)
     form = Stu(instance=instance)
     if request.method == 'POST' :
-        form = Stu(request.POST or None, instance=instance)
+        form = Stu(request.POST,request.FILES, instance=instance)
         if form.is_valid():
-            if 'image' in request.FILES:
-                form.image = request.FILES['image']
-                form.save()
-            else:
-                form.save()
-
+            new = form.save(commit = False)
+            new.image = request.FILES('image')
+            new.save()
             #username=form.cleaned_data.get('username')
             #messages.success(request, f'Account created for {username}!')
             return redirect("body:body")

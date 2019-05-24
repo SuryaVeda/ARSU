@@ -16,7 +16,7 @@ class Schedule(models.Model):
     batches = models.ForeignKey(batches,on_delete=models.SET_NULL, null=True, blank=False)
     pdf = models.FileField(blank=True, null = True, upload_to = "pdf/%Y/%m/$D/")
     image = models.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
-    heading = models.CharField(max_length = 40, blank = True, null = True)
+    heading = models.CharField(max_length = 40, blank = False, null = True)
     text = models.TextField(max_length=150, blank=True)
     def __str__(self):
         return self.heading
@@ -25,7 +25,7 @@ class Attendance(models.Model):
     batches = models.ForeignKey(batches,on_delete=models.SET_NULL, null=True, blank=False)
     pdf = models.FileField(blank=True, null = True, upload_to = "pdf/%Y/%m/$D/")
     image = models.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
-    heading = models.CharField(max_length = 40, blank = True, null = True)
+    heading = models.CharField(max_length = 40, blank = False, null = True)
     text = models.TextField(max_length=150, blank=True)
     def __str__(self):
         return self.heading
@@ -34,7 +34,7 @@ class Results(models.Model):
     batches = models.ForeignKey(batches,on_delete=models.SET_NULL, null=True, blank=False)
     pdf = models.FileField(blank=True, null = True, upload_to = "pdf/%Y/%m/$D/")
     image = models.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
-    heading = models.CharField(max_length = 40, blank = True, null = True)
+    heading = models.CharField(max_length = 40, blank = False, null = True)
     text = models.TextField(max_length=150, blank=True)
     def __str__(self):
         return self.heading
