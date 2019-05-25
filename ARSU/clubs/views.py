@@ -13,6 +13,7 @@ def clubs(request):
 @cr_required
 def posts(request, id):
     template_name = 'accounts/table.html'
+    cat = Categories.objects.get(pk=id)
     form = EventForms()
     if request.method == 'POST':
         form = EventForms(request.POST, request.FILES)
@@ -20,7 +21,7 @@ def posts(request, id):
            form = form.save(commit=False)
            form.post = Categories.objects.get(pk=id)
            form.save()
-           return redirect('clubs:clubs')
+           return redirect('clubs:new', id=cat.post.pk)
     else:
         form = EventForms()
     return render(request, template_name, {'form':form})
@@ -48,7 +49,7 @@ def addCategories(request, id):
            form = form.save(commit=False)
            form.post = Clubs.objects.get(pk=id)
            form.save()
-           return redirect('clubs:clubs')
+           return redirect('clubs:new', id=id)
     else:
         form = CategoriesForm()
     return render(request, template_name, {'form':form})
@@ -66,4 +67,4 @@ def newClub(request, id):
 def event_delete(request,id):
     event = Events.objects.get(pk=id)
     event.delete()
-    return redirect('clubs:clubs')
+    return redirect('clubs:new', id=event.post.post.pk)
