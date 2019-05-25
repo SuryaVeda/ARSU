@@ -86,7 +86,7 @@
   </div>
   <div class="schedule attendance">
     <h4>Attendance<a href="{% url 'home:attendance' %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
-    {% if request.user.batch == batch %}
+    {% if request.user.batch.name == "MBBS BATCH 2015" %}
     <a href="http://aiimsrishikesh.edu.in/?page_id=1537">link to official attendance page.</a>
     {% endif %}
     {% for post in attendance %}
