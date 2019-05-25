@@ -32,10 +32,6 @@
   background-color: white;
   margin: 40px auto;
 }
-.subjects h3 {
-  text-align: center;
-  margin:1% auto;
-}
 
 .image {
   margin: 30px auto;
@@ -45,7 +41,7 @@
   margin: 50px auto;
   border-style: outset;
   border-color: grey;
-
+  overflow: scroll;
 }
 @media screen and (max-width: 800px){
   .butt{
