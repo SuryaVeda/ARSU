@@ -4,16 +4,25 @@ from .forms import subjectForm, EbookForm, PaperForm, LectureForm
 from itertools import chain
 from django.contrib.auth.decorators import login_required
 from home.decorators import student_required, cr_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Create your views here.
 @login_required
 @student_required
 def notes(request):
     template_name = 'notes/classNotes.html'
     subjects = subject.objects.order_by('pk')
+    paginator = Paginator(subjects, 5)
+    try:
+        x = paginator.page(page)
+    except PageNotAnInteger:
+        x = paginator.page(1)
+    except EmptyPage:
+        x = paginator.page(paginator.num_pages)
     Eposts = Ebook.objects.order_by('pk')
     Pposts = Paper.objects.order_by('pk')
     Lposts = Lecture.objects.order_by('pk')
-    return render(request, template_name, {'subjects':subjects, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
+    return render(request, template_name, {'x':x,'subjects':subjects, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
 
 @login_required
 @cr_required

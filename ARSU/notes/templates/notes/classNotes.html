@@ -32,7 +32,7 @@
 </div>
 {% endif %}
 
-  {% for subject in subjects%}
+  {% for subject in x%}
   <div class="container-fluid subjects ">
       <h3 id="{{ subject.pk }}">{{ subject.heading }}</h3>
     <div class="container-fluid ebooks">
@@ -127,6 +127,7 @@
     </div>
   </div>
   {% endfor %}
+  {% include 'home/pagination.html' %}
 </div>
 
 {% endblock %}
