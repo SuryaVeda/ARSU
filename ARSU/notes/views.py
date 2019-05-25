@@ -53,7 +53,7 @@ def Pposts(request,id):
           form.user = request.user
           form.post = subject.objects.get(pk=id)
           form.save()
-          return redirect('notes:notes', args=id)
+          return redirect('notes:notes', id=id)
     else:
         form = PaperForm()
         return render(request, template_name, {'form':form})
