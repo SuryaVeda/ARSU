@@ -55,4 +55,8 @@ a {
   .circle {
     margin: 0 auto;
   }
+  .post{
+    margin: 30px auto;
+    width: 100%;
+  }
 }
