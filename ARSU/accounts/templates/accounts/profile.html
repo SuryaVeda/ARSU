@@ -29,20 +29,11 @@
       {% endfor %}
     </ol>
   </div>
-  <div class="col-lg-8 col-md-12 col-auto imag">
-    <div class="backgroundImage">
-      <img src="/media/{{ profile.backgroundImage }}" height="400px" width="100%" >
-    </div>
-    <div class="profilePic">
-      <img src="/media/{{ profile.profilePic }}" height="200px" width="30%" >
-    </div>
+  <div class="col-lg-8 col-md-12 col-auto">
     <div class="details">
       <p>{{ profile.name }}</p>
       <p>Batch: {{ profile.batch }}</p>
       <p>Date of Birth: {{ profile.dob }}</p>
-      <p>Hobbies: {{ profile.hobbies }}</p>
-      <p>About: {{ profile.about }}</p>
-      <p>Quotes: {{ profile.quotes }}</p>
       <p>fb/insta: {{ profile.links }}</p>
       <p>Phone: {{ profile.phone }}</p>
       <a href="{% url 'accounts:profileForm' profile.pk %}">Change Profile</a>
