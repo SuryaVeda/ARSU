@@ -13,28 +13,20 @@
           <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
           <button class="btn  my-2 my-sm-0 search" type="submit" value="Search" >Search</button>
       </form>
+      {% for sub in subjects %}
       <ol>
-        <li>    <a class="dropdown-item" href="#{{ sub.pk }}">{{ sub.heading }} </a></li>
-      {% endfor %}
+        <li>    <a class="dropdown-item" href="{% url 'notes:note' sub.pk %}">{{ sub.heading }} </a></li>
       </ol>
+      {% endfor %}
     </div>
   </div>
-{% if request.user.cr %}
   <div class="sub">
-      <h2>Subjects</h2>
-      <a href="{% url 'notes:subject' %}"> <img src="/media/images/plus.png" height = "20px" width = "20px"> </a>
+      <h2>{{sub.heading}}</h2>
   </div>
-{% elif request.user.student %}
-<div class="sub">
-    <h2>Subjects</h2>
-</div>
-{% endif %}
 
-  {% for subject in subjects%}
   <div class="container-fluid subjects ">
-      <h3 id="{{ subject.pk }}">{{ subject.heading }}</h3>
     <div class="container-fluid ebooks">
-      <h4>Ebooks   <a href="{% url 'notes:Epost' subject.pk %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
+      <h4>Ebooks   <a href="{% url 'notes:Epost' sub.pk %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
       <div class="row">
         {% for post in Eposts %}
          <div class="col-auto post ebook">
@@ -62,7 +54,7 @@
       <button type="button" name="button"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></button>
     </div>
     <div class="container-fluid ebooks">
-      <h4>Papers<a href="{% url 'notes:Ppost' subject.pk %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
+      <h4>Papers<a href="{% url 'notes:Ppost' sub.pk %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
       <div class="row">
         {% for post in Pposts %}
         <div class="col-auto post paper">
@@ -90,7 +82,7 @@
       <button type="button" name="button"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></button>
     </div>
     <div class="container-fluid ebooks">
-      <h4>Lectures <a href="{% url 'notes:Lpost' subject.pk %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
+      <h4>Lectures <a href="{% url 'notes:Lpost' sub.pk %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
       <div class="row">
         {% for post in Lposts %}
         <div class="col-auto post lecture">
