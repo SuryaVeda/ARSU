@@ -27,6 +27,7 @@ class Attendance(models.Model):
     image = models.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
     heading = models.CharField(max_length = 40, blank = False, null = True)
     text = models.TextField(max_length=150, blank=True)
+    link = models.URLField(max_length = 300,, null=True, blank=True )
     def __str__(self):
         return self.heading
 class Results(models.Model):
