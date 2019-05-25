@@ -97,7 +97,7 @@ def topic(request, id):
           form.user = request.user
           form.subject = subject.objects.get(pk=id)
           form.save()
-          return redirect('mcq:hola', id=pk)
+          return redirect('mcq:hola', id=id)
     else:
         form = TopicForm()
         return render(request, template_name, {'form':form})
