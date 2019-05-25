@@ -14,13 +14,13 @@ def subs(request):
     subjects = subject.objects.order_by('pk')
     return render(request, template_name, {'subjects':subjects})
 @login_required
-
+@student_required
 def notes(request, id):
     template_name = 'notes/classNotes.html'
     sub = subject.objects.get(pk=id)
-    Eposts = Ebook.objects.filter(pk=id)
-    Pposts = Paper.objects.filter(pk=id)
-    Lposts = Lecture.objects.filter(pk=id)
+    Eposts = Ebook.objects.filter(post=sub)
+    Pposts = Paper.objects.filter(post=sub)
+    Lposts = Lecture.objects.filter(post=sub)
     return render(request, template_name, {'sub':sub, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
 
 @login_required
