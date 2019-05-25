@@ -186,10 +186,10 @@ class RemainderForm(forms.ModelForm):
         fields = ['text']
 
 class ProfileForm(forms.ModelForm):
-    dob = forms.DateField(input_formats=['%m/%d/%Y'], widget = forms.TextInput(attrs={
+    dob = forms.DateField(input_formats=['%m/%d/%Y'], required = False, widget = forms.TextInput(attrs={
         'id': 'datepicker-4'}))
-    about = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20}))
-    quotes = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20}))
+    about = forms.CharField(required = False, widget=forms.Textarea(attrs={"rows":5, "cols":20}))
+    quotes = forms.CharField(required = False, widget=forms.Textarea(attrs={"rows":5, "cols":20}))
 
     class Meta:
         model = Profile
