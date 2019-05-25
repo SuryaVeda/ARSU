@@ -6,12 +6,13 @@
   <div class="lolo">
       <p>Subjects</p>
   </div>
-  <div class="grid-container">
+  <div class="row">
     {% for sub in subjects %}
-    <div class="grid-item">
+    <div class="col-auto post">
           <a  class="text" href="{% url 'mcq:hola' sub.pk %}"><h4>{{ sub.heading }}</h4></a>
       {% if sub.image %}
-        <img src="/media/{{ sub.image }}" height="200px" width="300px">
+      <a  class="text" href="{% url 'mcq:hola' sub.pk %}"><img src="/media/{{ sub.image }}" height="200px" width="300px"></a>
+
       {% endif %}
     </div>
     {% endfor %}

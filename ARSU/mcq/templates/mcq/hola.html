@@ -23,12 +23,6 @@
     Topics
   </button>
    <div class="dropdown-menu list" aria-labelledby="dropdownMenuButton">
-     <form class="  dropdown-item" method="get" action="{% url 'mcq:search' %}" value = "{{ request.GET.q }}">
-        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search MCQ's" aria-label="Search" value="{{ request.GET.q }}">
-        <div id="search">
-          <button class="btn  my-2 my-sm-0 " type="submit" value="Search" >Search</button>
-        </div>
-    </form>
     {% for topic in topics %}
   <a class="dropdown-item" href="#{{ topic.pk }}">{{ topic.heading }} </a>
     {% endfor %}
