@@ -12,7 +12,7 @@ class AttendanceForm(ModelForm):
     #image = forms.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
     class Meta:
         model = Attendance
-        fields = ['heading','pdf', 'image', 'text']
+        fields = ['heading','pdf', 'image', 'text', 'link']
 class ResultsForm(ModelForm):
     #image = forms.ImageField(blank=True, null = True, upload_to = 'images/%Y/%m/$D/')
     class Meta:

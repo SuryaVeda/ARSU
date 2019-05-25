@@ -104,6 +104,9 @@
       {% if post.text %}
       <p>{{post.text}}</p>
       {% endif %}
+      {% if post.link %}
+      <a href="{{post.link}}">link to attendance</a>
+      {% endif %}
     </div>
     {% endfor %}
     <div id="loadMore3" class="down">
