@@ -70,7 +70,7 @@ def Lposts(request, id):
           form.user = request.user
           form.post = subject.objects.get(pk=id)
           form.save()
-          return redirect('notes:notes' id=id)
+          return redirect('notes:notes', id=id)
     else:
         form = LectureForm()
         return render(request, template_name, {'form':form})
@@ -86,7 +86,7 @@ def Eposts(request, id):
           form.user = request.user
           form.post = subject.objects.get(pk=id)
           form.save()
-          return redirect('notes:notes' id=id)
+          return redirect('notes:notes', id=id)
     else:
         form = EbookForm()
         return render(request, template_name, {'form':form})
