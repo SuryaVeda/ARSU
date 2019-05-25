@@ -12,6 +12,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def notes(request):
     template_name = 'notes/classNotes.html'
     subjects = subject.objects.order_by('pk')
+    page = request.GET.get('page', 1)
     paginator = Paginator(subjects, 5)
     try:
         x = paginator.page(page)
