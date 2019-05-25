@@ -21,11 +21,17 @@
       </ol>
     </div>
   </div>
-
+{% if request.user.cr %}
   <div class="sub">
       <h2>Subjects</h2>
       <a href="{% url 'notes:subject' %}"> <img src="/media/images/plus.png" height = "20px" width = "20px"> </a>
   </div>
+{% elif request.user.student %}
+<div class="sub">
+    <h2>Subjects</h2>
+</div>
+{% endif %}
+
   {% for subject in subjects%}
   <div class="container-fluid subjects ">
       <h3 id="{{ subject.pk }}">{{ subject.heading }}</h3>

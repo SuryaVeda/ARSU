@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Clubs, Categories, Events
-from home.decorators import student_required
+from home.decorators import student_required, cr_required
 from .forms import EventForms, ClubsForm, CategoriesForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -10,7 +10,7 @@ def clubs(request):
     clubs = Clubs.objects.order_by('pk')
     return render(request, template_name, {'clubs':clubs})
 @login_required
-@student_required
+@cr_required
 def posts(request, id):
     template_name = 'accounts/table.html'
     form = EventForms()
@@ -25,7 +25,7 @@ def posts(request, id):
         form = EventForms()
     return render(request, template_name, {'form':form})
 @login_required
-@student_required
+@cr_required
 def addClub(request):
     template_name = 'accounts/table.html'
     form = ClubsForm()
@@ -38,7 +38,7 @@ def addClub(request):
             form = ClubsForm()
     return render(request, template_name, {'form':form})
 @login_required
-@student_required
+@cr_required
 def addCategories(request, id):
     template_name = 'accounts/table.html'
     form = CategoriesForm()
@@ -62,7 +62,7 @@ def newClub(request, id):
     context = {'club':club, 'details':details, 'events':events, 'clubs':clubs}
     return render(request, template_name, context)
 @login_required
-@student_required
+@cr_required
 def event_delete(request,id):
     event = Events.objects.get(pk=id)
     event.delete()

@@ -3,7 +3,7 @@ from .models import subject, Ebook, Paper, Lecture
 from .forms import subjectForm, EbookForm, PaperForm, LectureForm
 from itertools import chain
 from django.contrib.auth.decorators import login_required
-from home.decorators import student_required
+from home.decorators import student_required, cr_required
 # Create your views here.
 @login_required
 @student_required
@@ -16,7 +16,7 @@ def notes(request):
     return render(request, template_name, {'subjects':subjects, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
 
 @login_required
-@student_required
+@cr_required
 def subject_form(request):
     template_name = 'notes/subjectForm.html'
     form = subjectForm()
