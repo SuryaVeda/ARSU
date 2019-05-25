@@ -1,5 +1,5 @@
 body {
-  font-family:"Comic Sans MS", cursive, sans-serif;
+  font-family: 'Sree Krushnadevaraya', serif;
 }
 
 a {
@@ -71,7 +71,7 @@ a:hover {
   height: 100px;
   padding:20px 0 20px 0;
   border: 5px solid hsl(0, 2%, 23%);
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Sree Krushnadevaraya', serif;
   color: white;
 }
 .cc  {

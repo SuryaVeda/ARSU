@@ -1,7 +1,7 @@
 
 .Introduction{
   text-align: center;
-  font-family:"Comic Sans MS", cursive, sans-serif;
+  font-family: 'Sree Krushnadevaraya', serif;
   margin: 40px 0 80px 0;
 }
 .academic {
@@ -49,24 +49,13 @@ margin: 20px auto;
 .Imp {
   background-color: #ffffe6;
   color: black;
-  font-family:"Comic Sans MS", cursive, sans-serif;
   padding: 50px 0 50px 0;
 }
 .impHeading h4 {
   font-weight: bold;
 }
-.hospitalNews  {
-  font-family:"Comic Sans MS", cursive, sans-serif;
-  background-color: #e6e6ff ;
-  padding: 50px 0 50px 0;
-}
-.hospitalNews h4 {
-  font-weight: bold;
-  font-size: 25px;
-}
 
 .campusNews{
-  font-family:"Comic Sans MS", cursive, sans-serif;
   color: black;
   padding: 50px 0 50px 0;
   background-color: #ccffcc;

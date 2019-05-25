@@ -1,5 +1,4 @@
 .intro {
-  font-family:"Comic Sans MS", cursive, sans-serif;
   text-align: center;
   background-color: white;
   margin: 40px auto;
@@ -9,7 +8,6 @@
   background-color: #ffec80;
 }
 .main_body{
-  font-family:"Comic Sans MS", cursive, sans-serif;
 }
 .student{
   text-align: center;
