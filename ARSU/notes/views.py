@@ -12,18 +12,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def notes(request):
     template_name = 'notes/classNotes.html'
     subjects = subject.objects.order_by('pk')
-    page = request.GET.get('page', 1)
-    paginator = Paginator(subjects, 5)
-    try:
-        x = paginator.page(page)
-    except PageNotAnInteger:
-        x = paginator.page(1)
-    except EmptyPage:
-        x = paginator.page(paginator.num_pages)
     Eposts = Ebook.objects.order_by('pk')
     Pposts = Paper.objects.order_by('pk')
     Lposts = Lecture.objects.order_by('pk')
-    return render(request, template_name, {'x':x,'subjects':subjects, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
+    return render(request, template_name, {'subjects':subjects, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
 
 @login_required
 @cr_required
