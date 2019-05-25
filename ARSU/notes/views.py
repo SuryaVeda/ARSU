@@ -14,7 +14,7 @@ def subs(request):
     subjects = subject.objects.order_by('pk')
     return render(request, template_name, {'subjects':subjects})
 @login_required
-@student_required
+
 def notes(request, id):
     template_name = 'notes/classNotes.html'
     sub = subject.objects.get(pk=id)
