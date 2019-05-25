@@ -19,6 +19,13 @@
 overflow: hidden;
 height: 400px;
 width: 500px;
+text-align: center;
+}
+.left{
+  background-color: grey;
+}
+.right{
+  background-color: grey;
 }
 .pagin{
   text-align: center;
