@@ -58,4 +58,11 @@
   background-color: grey;
   color: white;
   }
+  .post{
+    margin: 50px auto;
+    border-style: outset;
+    border-color: grey;
+    overflow: scroll;
+    width: 100%;
+  }
 }
