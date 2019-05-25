@@ -55,6 +55,7 @@
   <div class="f" id="{{post.pk}}">
     <ol>
       <li> <h3>{{ post.heading }}</h3> </li>
+      <p>Total number of questions = {{length}}</p>
       <a href="{% url 'mcq:forms' post.pk sub.pk %}"><p> Add Mcqs<img src="/media/images/plus.png" height="10px" width="10px"></p></a>
       <a href="{% url 'mcq:card' post.pk sub.pk %}"><p> Add flashcards<img src="/media/images/plus.png" height="10px" width="10px"></p></a>
       <a href="{% url 'mcq:fact' post.pk sub.pk %}"><p> Add facts<img src="/media/images/plus.png" height="10px" width="10px"></p></a>

@@ -21,7 +21,8 @@ def sub(request, id):
     facts = Fact.objects.filter(subject=sub)
     cards = FlashCard.objects.filter(subject=sub)
     questions = list(chain( mcqs, facts, cards))
-    context = {'questions':questions, 'subjects':subjects, 'sub':sub, 'topics':topics, 'mcqs':mcqs, 'facts':facts, 'cards':cards}
+    length = len(questions)
+    context = {'questions':questions, 'subjects':subjects, 'sub':sub, 'topics':topics, 'mcqs':mcqs, 'facts':facts, 'cards':cards, 'length':length}
     return render(request, template_name, context)
 
 @login_required
