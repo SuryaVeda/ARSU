@@ -70,7 +70,7 @@ def Lposts(request, id):
           form.user = request.user
           form.post = subject.objects.get(pk=id)
           form.save()
-          return redirect('notes:notes')
+          return redirect('notes:notes' id=id)
     else:
         form = LectureForm()
         return render(request, template_name, {'form':form})
@@ -86,7 +86,7 @@ def Eposts(request, id):
           form.user = request.user
           form.post = subject.objects.get(pk=id)
           form.save()
-          return redirect('notes:notes')
+          return redirect('notes:notes' id=id)
     else:
         form = EbookForm()
         return render(request, template_name, {'form':form})
@@ -98,7 +98,7 @@ def search(request):
         query = request.GET.get('q')
         submitButton = request.GET.get('submit')
         if query == "":
-            return redirect('notes:notes')
+            return redirect('notes:subj')
         else:
             a = subject.objects.search(query)
             b = Ebook.objects.search(query)
@@ -108,4 +108,4 @@ def search(request):
             length = len(results)
             return render(request, template_name, {'final':final, 'length':length})
     else:
-        return redirect('notes:notes')
+        return redirect('notes:subj')
