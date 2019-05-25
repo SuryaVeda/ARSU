@@ -7,6 +7,10 @@
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
      R</button>
      <div class="dropdown-menu list" aria-labelledby="dropdownMenuButton">
+       <h4>
+         Remainders
+         <a href="{% url 'accounts:remainders' %}"> <img src="/media/images/plus.png" height = "20px" width = "20px"> </a>
+       </h4>
        <ol>
          {% for post in remainders %}
          <li>{{post.text}}</li>
