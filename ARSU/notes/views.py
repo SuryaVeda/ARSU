@@ -36,13 +36,14 @@ def subject_form(request):
           form = form.save(commit=False)
           form.user = request.user
           form.save()
-          return redirect('notes:notes')
+          return redirect('notes:subj')
     else:
         form = subjectForm()
         return render(request, template_name, {'form':form})
 @login_required
 @student_required
 def Pposts(request,id):
+    sub = subject.objects.get(pk=id)
     template_name = 'notes/postForm.html'
     form = PaperForm()
     if request.method =='POST':
@@ -52,7 +53,7 @@ def Pposts(request,id):
           form.user = request.user
           form.post = subject.objects.get(pk=id)
           form.save()
-          return redirect('notes:notes')
+          return redirect('notes:notes id')
     else:
         form = PaperForm()
         return render(request, template_name, {'form':form})
