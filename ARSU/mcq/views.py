@@ -38,7 +38,7 @@ def mcq(request, id, pk):
           form.subject = subject.objects.get(pk = pk)
           form.topic = Topic.objects.get(pk=id)
           form.save()
-          return redirect('mcq:sticky')
+          return redirect('mcq:hola', id=pk)
     else:
         form = McqForm()
         return render(request, template_name, {'form':form})
@@ -58,7 +58,7 @@ def cards(request, id, pk):
           form.subject = subject.objects.get(pk = pk)
           form.topic = Topic.objects.get(pk=id)
           form.save()
-          return redirect('mcq:sticky')
+          return redirect('mcq:hola', id=pk)
     else:
         form = FlashCardForm()
         return render(request, template_name, {'form':form})
@@ -78,7 +78,7 @@ def facts(request, id, pk):
           form.subject = subject.objects.get(pk = pk)
           form.topic = Topic.objects.get(pk=id)
           form.save()
-          return redirect('mcq:sticky')
+          return redirect('mcq:hola', id=pk)
     else:
         form = FactForm()
         return render(request, template_name, {'form':form})
@@ -97,7 +97,7 @@ def topic(request, id):
           form.user = request.user
           form.subject = subject.objects.get(pk=id)
           form.save()
-          return redirect('mcq:sticky')
+          return redirect('mcq:hola', id=pk)
     else:
         form = TopicForm()
         return render(request, template_name, {'form':form})
