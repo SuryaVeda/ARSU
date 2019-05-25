@@ -15,7 +15,7 @@
       </form>
       {% for sub in subjects %}
       <ol>
-        <li>    <a class="dropdown-item" href="{% url 'notes:note' sub.pk %}">{{ sub.heading }} </a></li>
+        <li>    <a class="dropdown-item" href="{% url 'notes:notes' sub.pk %}">{{ sub.heading }} </a></li>
       </ol>
       {% endfor %}
     </div>

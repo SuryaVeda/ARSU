@@ -9,7 +9,7 @@
   <div class="row">
     {% for sub in subjects %}
     <div class="col-auto post">
-          <a  class="text" href="{% url 'notes:note' sub.pk %}"><h4>{{ sub.heading }}</h4></a>
+          <a  class="text" href="{% url 'notes:notes' sub.pk %}"><h4>{{ sub.heading }}</h4></a>
       {% if sub.image %}
         <img src="/media/{{ sub.image }}" height="200px" width="300px">
       {% endif %}
