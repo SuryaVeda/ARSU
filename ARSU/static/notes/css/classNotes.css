@@ -40,13 +40,7 @@
 .image {
   margin: 30px auto;
 }
-#pagin{
-  text-align: center;
-  margin: 0 auto;
-}
-.pagin li {
-  margin: 0 10px 0 10px;
-}
+
 .post{
   margin: 50px auto;
   border-style: outset;
