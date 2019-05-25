@@ -69,7 +69,7 @@
       <h4>Papers<a href="{% url 'notes:Ppost' subject.pk %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
       <div class="row">
         {% for post in Pposts %}
-        {% if post.post == subject %}
+        {% if post.post.heading == subject.heading %}
         <div class="col-auto post paper">
           {% if post.pdf %}
           <div class="pdf">
