@@ -8,12 +8,15 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 @login_required
+@student_required
 def subs(request):
     template_name = 'notes/subjects.html'
     subjects = subject.objects.order_by('pk')
     return render(request, template_name, {'subjects':subjects})
+
 @login_required
-def notes(request, id):
+@student_required
+def note(request, id):
     template_name = 'notes/classNotes.html'
     sub = subject.objects.get(pk=id)
     Eposts = Ebook.objects.filter(post=sub)
