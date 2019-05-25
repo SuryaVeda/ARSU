@@ -9,13 +9,19 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 @login_required
 @student_required
-def notes(request):
-    template_name = 'notes/classNotes.html'
+def subs(request):
+    template_name = 'notes/subjects.html'
     subjects = subject.objects.order_by('pk')
-    Eposts = Ebook.objects.order_by('pk')
-    Pposts = Paper.objects.order_by('pk')
-    Lposts = Lecture.objects.order_by('pk')
-    return render(request, template_name, {'subjects':subjects, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
+    return render(request, template_name, {'subjects':subjects})
+@login_required
+@student_required
+def notes(request, id):
+    template_name = 'notes/classNotes.html'
+    sub = subject.objects.get(pk=id)
+    Eposts = Ebook.objects.filter(pk=id)
+    Pposts = Paper.objects.filter(pk=id)
+    Lposts = Lecture.objects.filter(pk=id)
+    return render(request, template_name, {'sub':sub, 'Eposts':Eposts, 'Lposts':Lposts, 'Pposts':Pposts})
 
 @login_required
 @cr_required
