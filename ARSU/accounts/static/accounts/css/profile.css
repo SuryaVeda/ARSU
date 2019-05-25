@@ -40,10 +40,9 @@
 }
 .details {
   text-align: center;
+  margin: 50px auto;
 }
-.details p {
 
-}
 .table{
   margin-top: 40px;
   border-color: black;
