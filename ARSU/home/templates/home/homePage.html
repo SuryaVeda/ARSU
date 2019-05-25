@@ -32,7 +32,7 @@
   {{ batch.name }}
   <div class="schedule sched">
     <h4>Schedules <a href="{% url 'home:schedule'%}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
-    {% for post in x %}
+    {% for post in schedules %}
     <div class="post sche">
       {% if request.user.cr %}
       <h4>{{ post.heading }} <a href="{% url 'home:schedule_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a>  </h4>
@@ -55,13 +55,12 @@
    <div id="loadMore1" class="down">
     <a href="#"><img src="/media/images/loadMore.png" height = "30px" width = "30px"></a>
    </div>
-   {% include 'home/pagination.html' %}
 
   </div>
   <div class="schedule results">
 
     <h4>Results<a href="{% url 'home:results'%}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
-    {% for post in z %}
+    {% for post in results %}
     <div class="post resu">
       {% if request.user.cr %}
       <h4>{{ post.heading }} <a href="{% url 'home:results_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
@@ -87,7 +86,7 @@
   </div>
   <div class="schedule attendance">
     <h4>Attendance<a href="{% url 'home:attendance' %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h4>
-    {% for post in y %}
+    {% for post in attendance %}
     <div class="post atte">
       {% if request.user.cr %}
       <h4>{{ post.heading }} <a href="{% url 'home:attendance_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
@@ -114,7 +113,7 @@
 </div>
 <div class="academic">
   <h3>NonAcademic Notifications<a href="{% url 'home:NAcad' %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h3>
-  {% for post in a %}
+  {% for post in naca %}
   <div class="post naca">
     {% if request.user.cr %}
     <h4>{{ post.heading }} <a href="{% url 'home:naca_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
@@ -140,7 +139,7 @@
 </div>
 <div class="academic">
   <h3>Campus News<a href="{% url 'home:Camp' %}"> <img src="/media/images/plus.png" height = "10px" width = "10px"> </a></h3>
-  {% for post in b %}
+  {% for post in camp %}
   <div class="post camp">
     {% if request.user.cr %}
     <h4>{{ post.heading }} <a href="{% url 'home:camp_delete' post.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a> </h4>
