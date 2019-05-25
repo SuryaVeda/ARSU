@@ -13,11 +13,12 @@
           <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
           <button class="btn  my-2 my-sm-0 search" type="submit" value="Search" >Search</button>
       </form>
-      {% for sub in subjects %}
       <ol>
+      {% for sub in subjects %}
         <li>    <a class="dropdown-item" href="{% url 'notes:notes' sub.pk %}">{{ sub.heading }} </a></li>
-      </ol>
       {% endfor %}
+    </ol>
+
     </div>
   </div>
   <div class="sub">
