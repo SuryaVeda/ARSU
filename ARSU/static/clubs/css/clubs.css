@@ -1,0 +1,112 @@
+.a{
+  text-align: center;
+}
+.club{
+  margin: 40px auto;
+}
+.lolo {
+  text-align: center;
+  margin: 50px auto;
+  font-weight: lighter;
+  font-size: 50px;
+  color: #800000;
+  text-decoration: underline;
+}
+.category{
+  text-align: center;
+  font-weight: lighter;
+  font-size: 30px;
+  color: #800000;
+  text-decoration: underline;
+  margin: 50px auto;
+}
+.ima {
+  text-align: center;
+}
+li {
+  list-style: square;
+}
+.butt{
+float: left;
+}
+.ass{
+  opacity: 1;
+  float: right;
+}
+.men {
+  overflow: scroll;
+}
+.eve h4 {
+  font-weight: 50;
+  font-size: 30px;
+  color: #800000;
+  text-decoration: underline;
+}
+.eve {
+  text-align: center;
+  margin: 40px auto;
+}
+.new {
+  border-style: inset;
+  border-color: white;
+  margin: 50px 50px;
+}
+
+.circle{
+  border: 5px inset #d9d9d9;
+  text-align: center;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+.circle p {
+  margin: 15px auto;
+  font-size: 15px;
+  font-weight: bold;
+
+}
+
+
+@media screen and (max-width: 800px) {
+
+  .circle {
+    margin: 0 auto;
+  }
+  .butt{
+  float: none;
+  }
+  .ass{
+    position: fixed;
+    opacity: 1;
+    left: 70%;
+    top:30%;
+    z-index: 1;
+  }
+  .eve h4{
+    text-align: center;
+    font-weight: 50;
+    font-size: 25px;
+  }
+  .lolo {
+    text-align: center;
+    font-weight: 100;
+    font-size: 40px;
+    margin: 5% auto;
+    color: #800000;
+    text-decoration: underline;
+  }
+  .new {
+    text-align: center;
+    margin: 30px auto;
+    border-style: inset;
+    border-color: white;
+    width: 100%;
+    overflow: scroll;
+  }
+  .ima img{
+    height: 300px;
+    width: 300px;
+  }
+}

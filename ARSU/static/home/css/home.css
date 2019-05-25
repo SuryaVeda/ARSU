@@ -1,0 +1,78 @@
+
+.Introduction{
+  text-align: center;
+  font-family: 'Sree Krushnadevaraya', serif;
+  margin: 40px 0 80px 0;
+}
+.academic {
+  margin-top: 40px;
+  text-align: center;
+}
+.naca {
+  background-color: #ffbeb3;
+}
+.camp{
+  background-color: #ffffe6;
+}
+.academic h3 {
+  text-decoration: underline;
+}
+.schedule{
+  margin: 40px auto;
+  text-align: center;
+}
+.sched {
+  background-color: #ffffe6;
+}
+.results {
+  background-color: #e6e6ff ;
+}
+.attendance {
+  background-color: #ccffcc;
+}
+.post {
+  margin: 70px auto;
+  border-style: outset;
+  overflow: scroll;
+  border-color: white;
+}
+.post p {
+margin: 20px auto;
+}
+.down{
+  margin: 0 auto;
+  text-align: center;
+}
+.down:hover{
+  background-color: #262626;
+}
+.Imp {
+  background-color: #ffffe6;
+  color: black;
+  padding: 50px 0 50px 0;
+}
+.impHeading h4 {
+  font-weight: bold;
+}
+
+.campusNews{
+  color: black;
+  padding: 50px 0 50px 0;
+  background-color: #ccffcc;
+}
+.campusNews h4 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+
+.nextPage{
+  background-color: hsl(0, 2%, 23%);
+  width: 100px;
+  font-size: 15px;
+  float: right;
+}
+.videos {
+  display: inline;
+  padding: 10px 40px 10px 10px;
+}

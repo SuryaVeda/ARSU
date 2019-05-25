@@ -1,0 +1,68 @@
+.butt{
+  left: 0%;
+  float: left;
+}
+.list{
+  height: 400px;
+  width: 400px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+}
+.down{
+  margin: 0 auto;
+  text-align: center;
+}
+.down:hover{
+  background-color: #262626;
+}
+.big{
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  background-color:#ffec80;
+  border-style: solid;
+  border-color: #ffec80;
+}
+.sub{
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  margin: 5% auto;
+  text-align: center;
+  background-color: white;
+
+}
+
+.subjects {
+  background-color: white;
+  margin: 40px auto;
+}
+.subjects h3 {
+  text-align: center;
+  margin:1% auto;
+}
+
+.image {
+  margin: 30px auto;
+}
+
+.post{
+  margin: 50px auto;
+  border-style: outset;
+  border-color: grey;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+
+}
+@media screen and (max-width: 800px){
+  .butt{
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    z-index: 1;
+  }
+
+  .list{
+  height: 200px;
+  width: 200px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+  }
+}

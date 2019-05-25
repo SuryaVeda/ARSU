@@ -1,0 +1,37 @@
+.form{
+  width: 100%;
+  overflow: scroll;
+  border-style: solid;
+  border-color: black;
+}
+.form li{
+  margin: 20px auto;
+}
+.box{
+  text-align: center;
+  margin-top: 10%;
+  width: 50%
+}
+.formBox{
+  margin-top: 40px;
+  text-align: left;
+  margin-left: 25%;
+}
+.formBox li {
+  margin-top: 40px;
+}
+.table{
+  overflow-x: auto;
+}
+button{
+  margin-top: 40px;
+  margin-left: 20%;
+}
+@media screen and (max-width: 800px) {
+  .form{
+    width: 100%;
+    overflow: scroll;
+    border-style: solid;
+    border-color: black;
+  }
+}

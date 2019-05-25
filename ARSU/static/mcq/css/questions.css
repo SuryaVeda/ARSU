@@ -1,0 +1,162 @@
+.butt{
+  float: left;
+}
+.carousel-item{
+height: 400px;
+}
+.facts h5{
+  text-decoration: underline;
+}
+.list{
+  height: 400px;
+  width: 400px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+}
+#search button{
+    border-color: black;
+    border-style: solid;
+  }
+.cont{
+  float: right;
+  right: 10%;
+}
+.left{
+  background-color: grey;
+}
+.right{
+  background-color: grey;
+}
+.ff{
+  text-align: center;
+  margin: 40px auto;
+  color: #800000;
+  font-weight: lighter;
+}
+.topics{
+}
+.f li{
+  list-style-type: square;
+}
+.f{
+  font-size: 25px;
+  margin: 60px auto;
+}
+.f p{
+  font-size: 15px;
+}
+.mm {
+  height: 400px;
+  width: 500px;
+  margin: 90px auto;
+  border-color: grey;
+  border-style: solid;
+  overflow: scroll;
+
+}
+.box {
+
+}
+.question {
+  margin-top: 30px;
+  overflow: auto;
+}
+.answer{
+  display: none;
+  text-align: center;
+
+}
+.answer h3{
+  text-decoration: underline;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.answer p {
+  font-weight: bold;
+  font-size: 24px;
+}
+.wrapper{
+  text-align: center;
+  top: 10px;
+}
+.wrapper button{
+  border: black;
+  border-style: solid;
+}
+.images{
+  text-align: center;
+  overflow: auto;
+}
+.images img{
+  height: 200px;
+  width: 200px;
+}
+.questionOne{
+  font-size: 25px;
+  text-align: center;
+  margin: 0 auto;
+}
+.questionOne img{
+  height: 300px;
+  width: 300px;
+}
+
+@media screen and (max-width: 800px) {
+  .mm {
+    height: 400px;
+    width: 300px;
+    margin: 90px auto;
+    overflow: auto;
+  }
+  .box {
+  }
+  .question {
+  }
+  .answer{
+    display: none;
+  }
+  .wrapper{
+    text-align: center;
+  }
+  .wrapper button{
+    border: black;
+    border-style: solid;
+  }
+  .images{
+    text-align: center;
+  }
+  .images img{
+    height: 150px;
+    width: 150px;
+  }
+  .questionOne img{
+    height: 200px;
+    width: 200px;
+  }
+
+  .butt{
+    position: fixed;
+    left: 50%;
+    top: 10%;
+    z-index: 1;
+  }
+
+  .list{
+  height: 200px;
+  width: 200px;
+  overflow: scroll;
+  background-color: grey;
+  color: white;
+  }
+  .carousel-item{
+  height: 300px;
+  overflow: scroll;
+  width: 100%;
+  }
+  .cont{
+    float: left;
+    right: 0;
+
+  }
+}
