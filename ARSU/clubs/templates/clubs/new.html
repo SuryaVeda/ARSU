@@ -34,7 +34,7 @@
   </div>
   {% elif request.user.student %}
   <div class="lolo">
-    <p>{{club.heading}}</p>
+    <p>{{club.heading}}<a href="{% url 'clubs:cat' club.pk %}"> <img src="/media/images/plus.png" height ="20px" width = "20px"> </a></p>
   </div>
   {% elif request.user.outsider %}
   <div class="lolo">
@@ -59,10 +59,10 @@
 {% endif %}
 
    <div class="eve container-fluid">
-     {% if request.user.cr %}
+     {% if request.user.cr or request.user.student%}
      <h4>Events<a href="{% url 'clubs:EventForm' post.pk %}"> <img src="/media/images/plus.png" height ="20px" width = "20px"> </a></h4>
 
-     {% elif request.user.outsider or request.user.student %}
+     {% elif request.user.outsider %}
      <h4>Events</h4>
      {% else %}
      <div class="#">
@@ -74,9 +74,9 @@
         {% if event.post.heading == post.heading %}
       <div class=" new col-lg-3 col-auto">
         <div class="#">
-          {% if request.user.cr %}
+          {% if request.user.cr or request.user.student %}
           <p> {{event.heading}}<a href="{% url 'clubs:delete' event.pk %}"><img src="/media/images/delete.jpg" height="30px" width="30px"></a></p>
-          {% elif request.user.outsider or student %}
+          {% elif request.user.outsider%}
           <p>{{event.heading}}</p>
           {% else %}
           <div class="#">

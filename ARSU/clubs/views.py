@@ -10,7 +10,7 @@ def clubs(request):
     clubs = Clubs.objects.order_by('pk')
     return render(request, template_name, {'clubs':clubs})
 @login_required
-@cr_required
+@student_required
 def posts(request, id):
     template_name = 'accounts/table.html'
     cat = Categories.objects.get(pk=id)
@@ -26,7 +26,7 @@ def posts(request, id):
         form = EventForms()
     return render(request, template_name, {'form':form})
 @login_required
-@cr_required
+@student_required
 def addClub(request):
     template_name = 'accounts/table.html'
     form = ClubsForm()
@@ -39,7 +39,7 @@ def addClub(request):
             form = ClubsForm()
     return render(request, template_name, {'form':form})
 @login_required
-@cr_required
+@student_required
 def addCategories(request, id):
     template_name = 'accounts/table.html'
     form = CategoriesForm()
@@ -63,7 +63,7 @@ def newClub(request, id):
     context = {'club':club, 'details':details, 'events':events, 'clubs':clubs}
     return render(request, template_name, context)
 @login_required
-@cr_required
+@student_required
 def event_delete(request,id):
     event = Events.objects.get(pk=id)
     event.delete()
