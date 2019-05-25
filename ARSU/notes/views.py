@@ -8,7 +8,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 @login_required
-@student_required
 def subs(request):
     template_name = 'notes/subjects.html'
     subjects = subject.objects.order_by('pk')
