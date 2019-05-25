@@ -17,13 +17,11 @@
   background-color: #262626;
 }
 .big{
-  font-family:"Comic Sans MS", cursive, sans-serif;
   background-color:#ffec80;
   border-style: solid;
   border-color: #ffec80;
 }
 .sub{
-  font-family:"Comic Sans MS", cursive, sans-serif;
   margin: 5% auto;
   text-align: center;
   background-color: white;
@@ -47,7 +45,6 @@
   margin: 50px auto;
   border-style: outset;
   border-color: grey;
-  font-family:"Comic Sans MS", cursive, sans-serif;
 
 }
 @media screen and (max-width: 800px){
