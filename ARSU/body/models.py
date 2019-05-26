@@ -14,5 +14,6 @@ class Student(models.Model):
 class Detail(models.Model):
     heading = models.CharField(max_length = 20, blank = False)
     text = models.CharField(max_length= 1000, blank = False)
+    link = models.URLField(max_length = 300 ,  null = True, blank = True)
     def __str__(self):
         return self.heading
