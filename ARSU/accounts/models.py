@@ -113,6 +113,7 @@ class Profile(models.Model):
     profilePic = models.ImageField(blank=True, null = True, upload_to = 'profiles/images/%Y/%m/$D/')
     name = models.CharField(max_length =50, blank=True, null = True)
     dob = models.DateField(blank=True, null = True)
+    batch = models.ForeignKey(batches,on_delete = models.CASCADE,  null = True, blank = True)
     hobbies = models.CharField(max_length =50,blank=True, null = True)
     about = models.CharField(max_length =500,blank=True, null = True)
     quotes = models.CharField(max_length =300,blank=True, null = True)
