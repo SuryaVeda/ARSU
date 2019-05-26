@@ -112,7 +112,6 @@ class Profile(models.Model):
     backgroundImage = models.ImageField(blank=True, null = True, upload_to = 'profiles/images/%Y/%m/$D/')
     profilePic = models.ImageField(blank=True, null = True, upload_to = 'profiles/images/%Y/%m/$D/')
     name = models.CharField(max_length =50, blank=True, null = True)
-    batch = models.ForeignKey(batches,on_delete=models.SET_NULL, null=True, blank=True)
     dob = models.DateField(blank=True, null = True)
     hobbies = models.CharField(max_length =50,blank=True, null = True)
     about = models.CharField(max_length =500,blank=True, null = True)
