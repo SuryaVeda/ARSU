@@ -132,7 +132,7 @@
         <h3>Answer</h3>
         <p>{{ card.answer }}</p>
         {% if card.a_image %}
-        <img  src="/media/{{ card.a_image }}" alt="First slide"height="200px" width="200px" >
+      <a href="/media/{{ card.a_image }}"><img  src="/media/{{ card.a_image }}" alt="First slide"height="200px" width="200px" ></a>
         {% endif %}
        </div>
       </div>
@@ -151,7 +151,7 @@
 
         {% if mcq.image %}
         <div class="images ">
-          <img  src="/media/{{ mcq.image }}" alt="First slide" height="200px" width="200px">
+        <a href="/media/{{ mcq.image }}"> <img  src="/media/{{ mcq.image }}" alt="First slide" height="200px" width="200px"></a> 
         </div>
         {% endif %}
       </div>
