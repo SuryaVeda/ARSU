@@ -27,7 +27,7 @@ class FlashCard(models.Model):
     subject = models.ForeignKey(subject, on_delete=models.SET_NULL, null=True, blank=False)
     topic= models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, blank=False)
     question = models.CharField(max_length = 270, blank = False)
-    answer = models.CharField(max_length = 140, blank = False)
+    answer = models.CharField(max_length = 540, blank = False)
     q_image = models.ImageField(blank=True, null = True, upload_to = 'mcqs/images/%Y/%m/$D/')
     a_image = models.ImageField(blank=True, null = True, upload_to = 'mcqs/images/%Y/%m/$D/')
     def __str__(self):
@@ -35,7 +35,7 @@ class FlashCard(models.Model):
 class Fact(models.Model):
     subject = models.ForeignKey(subject, on_delete=models.SET_NULL, null=True, blank=False)
     topic= models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, blank=False)
-    answer = models.CharField(max_length = 140, blank = False)
+    answer = models.CharField(max_length = 540, blank = False)
     image = models.ImageField(blank=True, null = True, upload_to = 'mcqs/images/%Y/%m/$D/')
     def __str__(self):
         return self.answer
