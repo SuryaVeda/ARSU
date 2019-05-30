@@ -104,13 +104,14 @@ def table(request):
     return render(request, template_name, {'form':form})
 @login_required
 @student_required
-def activities(request):
+def activities(request, id):
     template_name = 'accounts/table.html'
     form = ActivitesForm(request.user)
     if request.method == 'POST' :
         form = ActivitesForm(request.user, request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
+            instance.table = Timetable.objects.get(pk=id)
             instance.user = request.user
             form.save()
             #username=form.cleaned_data.get('username')

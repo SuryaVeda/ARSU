@@ -174,7 +174,7 @@ class ActivitesForm(forms.ModelForm):
     text = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20}))
     class Meta:
         model = Activites
-        fields = ['table', 'date', 'heading', 'text']
+        fields = ['date', 'heading', 'text']
     def __init__(self, user, *args, **kwargs):
         super(ActivitesForm, self).__init__(*args, **kwargs)
         self.fields['table'].queryset = Timetable.objects.filter(user=user)
