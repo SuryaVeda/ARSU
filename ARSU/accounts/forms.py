@@ -175,9 +175,6 @@ class ActivitesForm(forms.ModelForm):
     class Meta:
         model = Activites
         fields = ['date', 'heading', 'text']
-    def __init__(self, user, *args, **kwargs):
-        super(ActivitesForm, self).__init__(*args, **kwargs)
-        self.fields['table'].queryset = Timetable.objects.filter(user=user)
 
 
 class RemainderForm(forms.ModelForm):
