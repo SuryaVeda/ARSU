@@ -106,9 +106,9 @@ def table(request):
 @student_required
 def activities(request, id):
     template_name = 'accounts/table.html'
-    form = ActivitesForm(request.user)
+    form = ActivitesForm()
     if request.method == 'POST' :
-        form = ActivitesForm(request.user, request.POST)
+        form = ActivitesForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.table = Timetable.objects.get(pk=id)
@@ -118,7 +118,7 @@ def activities(request, id):
             #messages.success(request, f'Account created for {username}!')
             return redirect("accounts:profile")
         else:
-            form = ActivitesForm(request.user)
+            form = ActivitesForm()
             return render(request, template_name, {'form':form})
     return render(request, template_name, {'form':form})
 @login_required
