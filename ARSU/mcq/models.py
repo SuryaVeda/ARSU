@@ -13,7 +13,7 @@ class Topic(models.Model):
 class Mcq(models.Model):
     subject = models.ForeignKey(subject, on_delete=models.SET_NULL, null=True, blank=False)
     topic= models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, blank=False)
-    question = models.CharField(max_length = 270, blank = False)
+    question = models.CharField(max_length = 1270, blank = False)
     option_one =  models.CharField(max_length = 270, blank = True, null = True)
     option_two =  models.CharField(max_length = 270, blank = True, null = True)
     option_three =  models.CharField(max_length = 270, blank = True, null = True)
@@ -26,8 +26,8 @@ class Mcq(models.Model):
 class FlashCard(models.Model):
     subject = models.ForeignKey(subject, on_delete=models.SET_NULL, null=True, blank=False)
     topic= models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, blank=False)
-    question = models.CharField(max_length = 270, blank = False)
-    answer = models.CharField(max_length = 540, blank = False)
+    question = models.CharField(max_length = 5270, blank = False)
+    answer = models.CharField(max_length = 2540, blank = False)
     q_image = models.ImageField(blank=True, null = True, upload_to = 'mcqs/images/%Y/%m/$D/')
     a_image = models.ImageField(blank=True, null = True, upload_to = 'mcqs/images/%Y/%m/$D/')
     def __str__(self):
