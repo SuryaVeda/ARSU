@@ -1,7 +1,7 @@
 from ARSU.settings.base import *
 
 DEBUG = False
-ALLOWED_HOSTS = ['178.32.245.193', 'localhost']
+ALLOWED_HOSTS = ['178.32.245.193', 'localhost', 'arsu.co.in']
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 DATABASES = {
