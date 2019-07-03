@@ -21,7 +21,7 @@ from django.views.static import serve
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('home.urls')),
+    path('', include('home.urls')),
     path('body/', include('body.urls')),
     path('classNotes/', include('notes.urls')),
     path('Events/', include('events.urls')),
